@@ -56,6 +56,7 @@ Hierarchical mergers containing higher generation (2g or higher) BH that have in
 
 \subsection{Methods}
 \label{sec:methods-ch2}
+
 Here we introduce the assumptions, models, and parameters that we vary in the \code{McFACTS} code relevant for testing the $q$--$\Xeff$ distribution.
 We run each of the following setups 100 times to build a statistically significant sample.
 In each run, our code evaluates the following physical processes: 1) BH populate the disk, 2) gas damping circularizes eccentric BH orbiters until their orbits are sufficiently circular at which point they migrate radially, 3) encounters between circularized BH form BBH whose separations shrink (harden) or expand (soften) due to gas and dynamical processes, 4) sufficiently hardened BH merge, 5) merger recoils put BH remnants on eccentric orbits where the process continues or removes them from the disk, and 6) gas torque acting on disk-crossing BH orbits replenishes the embedded BH population from the NSC.
@@ -189,6 +190,66 @@ The parameter \code{fraction_bin_retro} controls the fraction of retrograde bina
 \begin{center}
 \begin{table}[htbp]
 {\footnotesize
+\begin{tabular}{r|cc}
+    Parameter & Default value & Units \\
+    \hline\hline
+    \code{smbh_mass} & $10^{8}$ & $M_{\odot}$ \\
+    \hline
+    \code{disk_model_name} & \code{sirko_goodman} & \\
+    \code{flag_use_pagn} & 1 & \\
+    \code{disk_radius_trap} & 700 & $\rm{r}_{g,\rm{SMBH}}$ \\
+    \code{disk_radius_outer} & $5\times 10^{4}$ & $\rm{r}_{g,\rm{SMBH}}$ \\
+    \code{disk_radius_max_pc} & 0 & \\
+    \code{disk_alpha_viscosity} & 0.01 & \\
+    \code{inner_disk_outer_radius} & $50$ & $\rm{r}_{g,\rm{SMBH}}$ \\
+    \code{disk_inner_stable_circ_orb} & $6$ & $\rm{r}_{g,\rm{SMBH}}$ \\
+    \code{disk_aspect_ratio_avg} & $0.03$ &  \\
+    \hline
+    \code{nsc_radius_outer} & 5 & pc\\
+    \code{nsc_radius_crit} & 0.25 & pc\\
+    \code{nsc_mass} & $3 \times 10^{7}$ & $M_{\odot}$ \\
+    \code{nsc_ratio_bh_num_star_num} & $10^{-3}$ &  \\
+    \code{nsc_ratio_bh_mass_star_mass} & 10 &  \\
+    \code{nsc_density_index_inner} & 1.75 & \\
+    \code{nsc_density_index_outer} & 2.5 & \\
+    \code{nsc_spheroid_normalization} & 1 &  \\
+    \code{nsc_imf_bh_mode} & 10 & $M_{\odot}$ \\
+    \code{nsc_imf_bh_max} & 40 & $M_{\odot}$ \\
+    \code{nsc_imf_powerlaw_index} & 2 & \\
+    \code{nsc_bh_spin_dist_mu} & 0 & \\
+    \code{nsc_bh_spin_dist_sigma} & 0.1 & \\
+    \code{nsc_imf_powerlaw_index} & 2 & \\
+    \hline
+    \code{disk_bh_torque_condition} & 0.1 & \\
+    \code{disk_bh_eddington_ratio} & 1.0 & \\
+    \code{disk_bh_orb_ecc_max_init} & 0.3 & \\
+    \code{disk_radius_capture_outer} & $10^{3}$ & $\rm{r}_{g,\rm{SMBH}}$ \\
+    \code{disk_bh_pro_orb_ecc_crit} & 0.01 & \\
+    \code{mass_pile_up} & 35 & $M_{\odot}$\\
+    \code{timestep_duration_yr} & $10^{4}$ & yr\\
+    \code{timestep_num} & 100 & \\
+    \code{capture_time_yr} & $10^{5}$ & yr\\
+    \code{galaxy_num} & 100 & \\
+    \code{delta_energy_strong} & 0.1 & \\
+    \code{fraction_bin_retro} & 0.0 & \\
+    \code{flag_thermal_feedback} & 1 & \\
+    \code{flag_orb_ecc_damping} & 1 & \\
+    \code{flag_dynamic_enc} & 1 & \\
+    \code{flag_torque_prescription} & \code{paardekooper} & \\
+    \code{mean_harden_energy_delta} & 0.9 & \\
+    \code{var_harden_energy_delta} & 0.025 & \\
+    \hline
+    \code{flag_add_stars} & 0 & \\
+\end{tabular}
+}
+\caption[Default \code{McFACTS} input parameters]{Default input parameters for the SMBH, AGN disk and NSC as well as physics choices in \texttt{p1\_model\_default.ini}.}
+\label{tab:default_model}
+\end{table}
+\end{center}
+
+\begin{center}
+\begin{table}[htbp]
+{\footnotesize
 \begin{tabular}{lclc}
     Run & Seed & Parameter & Value \\
     \hline\hline
@@ -220,7 +281,7 @@ The parameter \code{fraction_bin_retro} controls the fraction of retrograde bina
 \end{tabular}
 }
 \caption[Parameter choices for McFACTS runs]{Unique parameters choices and random number generator seeds for each run.
-All other parameters are unchanged from those in the default models, which are otherwise identical to those in Paper I \citep{McKernan+25-mcfactsI}.
+	All other parameters are unchanged from those in the default models, which are otherwise identical to those in Table~\ref{tab:default_model}.
 Continued in Table~\ref{tab:run-parameters-A}}
 \label{tab:run-parameters-A}
 \end{table}

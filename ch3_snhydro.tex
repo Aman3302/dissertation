@@ -1,21 +1,25 @@
 \addtocontents{toc}{\protect}
-\section{\texorpdfstring{\MakeUppercase{hydrodynamic models of supernovae in active galactic nuclear accretion disks}}{hydrodynamic models of supernovae in active galactic nuclear accretion disks}}
+\section{\texorpdfstring{\MakeUppercase{sn shock breakout from agn accretion disks}}{sn shock breakout from agn accretion disks}}
 \label{sec:sn-hydrodynamics}
 
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
 
-\par The model that is developed in this chapter and its corresponding results are currently under review by a referee.
+\par The models and corresponding results developed in this chapter are currently under review for publication in the \textit{Astrophysical Journal}.
 As such, the main text of this chapter is directly informed by the content of that publication.
-To cite this chapter, please use Cook+26a.
+To cite this chapter, please use Cook et al. 26a when possible.
 
-We aim to assess how shocks evolve in this dense stratified medium and understand where SNe are muffled and have their kinetic energy absorbed by an AGN disk versus escaping.
-We use Sirko \& Goodman (SG) and Thompson, Quataert \& Murray (TQM) AGN disk models for midplane radial profiles, generated with the pAGN code; we compare the disk pressure to the energy of a standard core-collapse SN ($10^{51}\,{\rm erg}$) to find radii where shock breakout can occur.
-For verification, we evolve three-dimensional (3D) hydrodynamic shearing box simulations of stratified Gaussian disks constructed from the midplane values that are injected with energy and mass from SNe placed at multiple radii and vertical locations, using the Athena code.
-We find SNe shocks in SG disks around black holes with mass $\Mbh=10^6\,\Msun$ become muffled beyond $R\sim10^6\,\Rs$, and that this muffling radius is inversely proportional to supermassive black hole (SMBH) mass with muffling occurring at $R\sim10^2\,\Rs$ for $\Mbh=10^9\,\Msun$.
+\subsection{Motivation}
+\label{sec:motivation-ch3}
+We aim to assess how shocks evolve in the dense stratified medium of AGN disks and understand where the kinetic energy injected by SN explosions from embedded stars is absorbed, or \emph{muffled}, as opposed to where they are able to break free from the disk.
+We generate midplane radial profiles using the SG and TQM one-dimensional AGN disk models with the help of the pAGN code.
+We compare the disk pressure as a function of radius to the energy of a standard core-collapse SN ($10^{51}\,{\rm erg}$) to find locations where shock-breakout can occur.
+For verification, we evolve three-dimensional hydrodynamic shearing box simulations of stratified Gaussian disks constructed from select midplane values and inject energy and mass from SNe using the Athena code to explore several radial and vertical placements.
+We find SNe shocks in SG disks around black holes with mass $\Mbh=10^6\,\Msun$ become muffled beyond $R\sim10^6\,\Rs$, and that this muffling radius is inversely proportional to supermassive black hole (SMBH) mass such that the muffling radius moves inward to $R\sim10^2\,\Rs$ for $\Mbh=10^9\,\Msun$.
 Around TQM disks, the muffling radius occurs at $R\sim10^6\,\Rs$, independent of $\Mbh$.
-The largest determining factor for muffling a SN shock is the local scale height of the AGN disk.
-We conclude that AGN disks can muffle SNe shocks depending on their density and vertical scale.
+We find the largest determining factor for muffling a SN shock is the local scale height of the AGN disk.
+We conclude that the location where AGN disks can muffle SNe shocks depends on their density and vertical scale.
+
 
 % ======================
 % ======================
@@ -28,24 +32,25 @@ We conclude that AGN disks can muffle SNe shocks depending on their density and 
 
 \citet{MacLowMcCray88} showed repeated SNe from star clusters can inflate superbubbles in disk galaxies.
 These bubbles can break free from the disk when the internal mechanical wind luminosity exceeds a characteristic luminosity scale set by local intensive thermodynamic quantities.
-Using their formalism, we can analytically compute where SNe are expected (or not expected) to break out from the AGN disk with further implications for observability dependent on the opacity.
+Using their formalism, we can analytically compute where SNe are expected (or not expected) to break out from the AGN disk with further implications for observability dependent on the disk opacity.
 
-Whether a SN explosion occurring at an AGN disk's midplane will break free from the disk or be muffled, can be roughly determined using the ram pressure of the SN, or, equivalently, its energy density
+Whether a SN explosion occurring at an AGN disk's midplane will break free from the disk or be muffled, can be roughly determined by comparing the ram pressure of the SN, or, equivalently, its energy density
 \begin{equation}
     \varepsilon_{\rm SN} \equiv \frac{\Esn}{V_{\rm SN}}\ {\rm erg\ cm^{-3}}
 \end{equation}
-and the gas pressure of the disk at the explosion site
+to the gas pressure of the disk at the explosion site
 \begin{equation}
     P_D(r) = n k T.
 \end{equation}
-The number density $n$ and temperature $T$ are those of the disk at the explosion's radial distance from the SMBH.
-Here, $k$ is Boltzmann's constant, $\Esn$ is the total kinetic energy released by the SN (typically, $10^{51}$ erg), and $V_{\rm SN}$ is the volume bound by the SN shock wave.
+$\Esn$ is the total kinetic energy released by the SN (typically, $10^{51}$ erg), $V_{\rm SN}$ is the volume bound by the SN shock wave, number density $n$ and temperature $T$ are those of the disk at the SN site given its radius from the SMBH.
+Here, $k$ is Boltzmann's constant, .
 The relative influence of the two is determined by their ratio
 \begin{equation}
     \C \equiv \frac{\varepsilon_{\rm SN}}{P_{\rm D}}.
 \end{equation}
 
-At early stages of the SN evolution, the shock will remain quasi-spherical, and its volume after expanding to a radius $\Rsn$ is thus $V_{\rm SN} = (4\pi/3) \Rsn^3$ leading to
+At early stages of the SN evolution, the shock will remain quasi-spherical.
+Its volume after expanding to a radius $\Rsn$ is thus $V_{\rm SN} = (4\pi/3) \Rsn^3$, leading to
 \begin{equation}
     \C = \frac{\Esn}{V_{\rm SN}P_{\rm D}} = \frac{3}{4\pi k} \frac{\Esn}{n T R_{\rm SN}^3}.
 \end{equation}
@@ -59,11 +64,12 @@ When $\C > 1$, the pressure in the SN shock exceeds the disk's gas pressure, and
 Since the path of least resistance lies perpendicular to the disk midplane, most of the expansion will be directed along the $z$-direction, temporarily excavating a column of the disk until the disk shear elongates and fills the cavity \citep{Rozyczka+95, Moranchel+21}. 
 When $\C < 1$, the SN lacks the pressure to break free from the disk, leading to a \emph{muffled} SN.
 Because they do not completely perforate the disk, these SNe impart a significant portion of $\Esn$ as heat into the disk, modifying the local temperature and disk structure.
+In fact, \citet{SirkoGoodman03} cite this as a possible mechanism to prevent gravitational collapse in the outer disk.
 In the left column of Fig.~\ref{fig:disk-models} we show radial profiles of midplane density, midplane temperature, scale height, and optical depth for SG disks orbiting SMBHs with masses $M_{\rm BH}=\{10^6, 10^7, 10^8, 10^9\}\,\msun$ as calculated with the \code{pAGN} package \citep{Gangardt+24-pAGN}.
 
 For a SN explosion with $\Esn=10^{51}$ erg orbiting a $10^8\,\msun$ SMBH at 1000 Schwarzschild radii $\Rs$ in an SG disk, the midplane temperature, density, and local scale height are $T\sim 10^5$ K, $\rho=10^{-9}\ \gcmcube$, and $H \sim 10$ AU, respectively.
 We find $\C \sim 2600$, indicating a strong breakout is expected.
-Substituting these values we can rewrite $\mathcal{C}$ as a scaling relation:
+Substituting these values into \eq{eqn:C}, we can rewrite $\mathcal{C}$ as a scaling relation:
 
 \begin{eqnarray}
     \C &\approx& 2600 \ \left(\frac{\Esn}{10^{51}\,{\rm erg}} \right) \ \left({\frac{\rho_0}{10^{-9}\,\rm{g\,cm^{-3}}}}\right)^{-1}  \nonumber \\
@@ -79,7 +85,8 @@ where we have also introduced the midplane density $\rho_0$ and the exponential 
     \centering
     \includegraphics[width=1.0\linewidth]{ch3_figs/disk_profiles_columns.pdf}
     \caption[Accretion disk midplane models]{\citet{SirkoGoodman03} (left column) and \citet{ThompsonQuataertMurray05} (right column) accretion disk models of midplane density (A, B), midplane temperature (C, D), local scale height (E, F), and optical depth (G, H) as functions of radius for disks orbiting various SMBH masses.
-    Vertical lines indicate where $\mathcal{C}=1$ for accretion disk models corresponding to SMBH with the same line style.}
+    Vertical lines indicate where $\C=1$ for accretion disk models corresponding to SMBH with the same line style.
+    In each case, $\C>1$ to the left of these lines.}
     \label{fig:disk-models}
 \end{figure}
 
@@ -96,12 +103,12 @@ where we have also introduced the midplane density $\rho_0$ and the exponential 
 %     \label{eqn:C-parameterized}
 % \end{eqnarray}
 
-Profiles for the TQM disk model in the right column of Fig.~\ref{fig:disk-models} tell a different story resulting in a drastically altered landscape for $\C$ as discussed later and shown as a function of BH mass and radius in Fig.~\ref{fig:breakout-midplane}.
+Profiles for the TQM disk model in the right column of Fig.~\ref{fig:disk-models} tell a different story, resulting in a drastically altered landscape for $\C$, as discussed in \sect{sec:results-ch3}.
 For all SMBH masses, the inner TQM disk is less dense while the opposite is true in the outer torus.
 The temperatures are similar to the SG model in the inner disk, but where SG bottoms out at $\sim 4 \times 10^3\,\rm{K}$ and holds that temperature until the disk edge, the TQM model extends down to $100\,\rm{K}$.
 The density differences are reflected in the local scale height, which are elevated in the inner regions, while suppressed beyond $R>10^5\,\Rs$.
-The optical depths behave much differently, with SG disks typically transitioning from being optically thick to thin at $R=10^5\,\Rs$ and TQM remaining entirely optically thick except near $R=10^4\,\Rs$ for $\Mbh<10^7\,\msun$.
-The vertical lines indicate where $\mathcal{C}=1$ for disk models corresponding to the same line styles indicating the SMBH mass.
+The optical depths behave much differently, with SG disks typically transitioning from being optically thick to thin at $R=10^5\,\Rs$ whereas TQM remain entirely optically thick except near $R=10^4\,\Rs$ for $\Mbh<10^7\,\msun$.
+The vertical lines mark where $\mathcal{C}=1$ for disk models corresponding to the same line styles indicating the SMBH mass.
 
 
 \subsubsection{Hydrodynamic Models}
@@ -123,7 +130,7 @@ Athena solves the equations of motion in the standard Cartesian shearing box app
     \Omega_{0}^{2}\rho\vec{v} \cdot (2qx{\bf \hat{i}} - z{\bf \hat{k}}).
     \label{eqn:cons_energy}
 \end{align}
-where $\rho$ is the gas density, $t$ is time, $\vec{v}$ the gas velocity, $P$ is the gas pressure, $\Omega(r) = (GM_{\rm BH}/r^3)^{1/2}$ is the Keplerian orbital frequency evaluated at the radial location corresponding to the center of the shearing box.
+where $\rho$ is the gas density, $t$ is time, $\vec{v}$ the gas velocity, $P$ is the gas pressure, and $\Omega(r) = (GM_{\rm BH}/r^3)^{1/2}$ is the Keplerian orbital frequency evaluated at the radial location corresponding to the center of the shearing box.
 The logarithmic shearing parameter $q$ is related to the orbital frequency by
 \begin{equation}
     q \equiv -\frac{d\ln\Omega(r)}{d\ln r}.
@@ -146,7 +153,7 @@ We assume an initial state of hydrostatic equilibrium resulting in a vertical di
     \rho_{\rm D} (z) = \rho_0 \, \exp\left[-\frac{\gamma}{2} \left(\frac{\Omega_0 z}{\cs}\right)^2 \right]
 \end{equation}
 where $\rho_0$ is the disk midplane density at our domain's radial location in the SG disk. We use the disk aspect ratio $h=H/r$ at the selected radius to find the scale height $H$ and thus the sound speed $\cs=\Omega H$, which we set to be constant throughout the domain in the initial conditions.
-For the purposes of this paper, we only adopt values from the SG disk model for our hydrodynamic models.
+For the purposes of this work, we only adopt values from the SG disk model for our hydrodynamic models.
 
 
 \subsubsubsection{Initializing the Supernova}
@@ -174,10 +181,14 @@ and amplitude
     \varepsilon_{\rm a} = \frac{ \Esn }{ (2 \pi)^{3/2} \Rsn^3 }. 
 \end{equation}
 Here $\Esn = 10^{51}$ erg is the total initial kinetic energy budget of a core-collapse SN.
-During testing before adding the disk, we find source regions smaller than 6 zones cause the grid to imprint a cubic shape onto the shock rather than allowing it to expand spherically symmetrically.
+During testing of isolated SNe, we find source regions smaller than 6 zones cause the grid to imprint a cubic shape onto the shock rather than allowing it to expand spherically symmetrically.
 Thus, we set the initial SN's radius $\Rsn = 3\Delta x$ in \eq{eqn:ejecta-gauss} where $\Delta x$ is the local cell size.
 
-\citet{Simpson+15} showed one must consider the time $\tpds$ and radius $\Rpds$ at which the transition from the Sedov-Taylor phase to the pressure-driven snowplow (PDS) phase occurs when adding the SN's energy to the domain. This transition depends on a combination of the density of the ambient gas and the local cell size and informs the fraction $\fkinetic$ of the total initial kinetic energy budget of the SN that remains in the kinetic phase $\varepsilon_{\rm K} = \fkinetic\,\esn$ and the fraction that has been converted to internal energy $\varepsilon_{\rm I} = (1-\fkinetic)\,\esn$. If $\Rpds < \Delta x$, the transition is unresolved and the SN can be added entirely as internal energy (i.e., $\fkinetic = 0$). But if $\Delta x < \Rpds$, the transition is resolved and some fraction of the energy must be added as kinetic energy (i.e., $0\leq\fkinetic\leq1$), which we calculate according to Section 3.5 in \citet{Simpson+15}. In practice, we find an upper limit of $\fkinetic \leq 0.16$ to avoid the so-called carbuncle instability \citep{PeeryImlay88, Robinet+00} that leads to numerical problems that eventually terminate the simulation.
+\citet{Simpson+15} showed one must consider the time $\tpds$ and radius $\Rpds$ at which the transition from the Sedov-Taylor phase to the pressure-driven snowplow (PDS) phase occurs when adding the SN's energy to the domain.
+This transition depends on a combination of the density of the ambient gas and the local cell size and informs the fraction $\fkinetic$ of the total initial kinetic energy budget of the SN that remains in the kinetic phase $\varepsilon_{\rm K} = \fkinetic\,\esn$ and the fraction that has been converted to internal energy $\varepsilon_{\rm I} = (1-\fkinetic)\,\esn$.
+If $\Rpds < \Delta x$, the transition is unresolved and the SN can be added entirely as internal energy (i.e., $\fkinetic = 0$).
+But if $\Delta x < \Rpds$, the transition is resolved and some fraction of the energy must be added as kinetic energy (i.e., $0\leq\fkinetic\leq1$), which we calculate according to \citet{Simpson+15}.
+In practice, we find an upper limit of $\fkinetic \leq 0.16$ is necessary to avoid the so-called carbuncle instability \citep{PeeryImlay88, Robinet+00} that leads to numerical problems that eventually terminate the simulation.
 
 
 \subsubsection{Computational Domain} \label{sec:HydroDomains}
@@ -185,11 +196,11 @@ Thus, we set the initial SN's radius $\Rsn = 3\Delta x$ in \eq{eqn:ejecta-gauss}
 The shearing box domain is characterized by shear-periodic boundaries in the $x$ (radial) and $y$ (azimuthal) dimensions.
 In addition, we use outflow boundary conditions for the $z$ (vertical) direction.
 The azimuthal flows leave and re-enter the periodic boundaries representing the flow of a continuous disk.
-Any shocks that enter the domain after passing through these periodic boundaries would have been emitted by adjacent SNe and produce effects in our domain no longer be consistent with an isolated SN.
+Any shocks that enter the domain after passing through these periodic boundaries would have been emitted by adjacent SNe and produce effects in our domain no longer consistent with an isolated SN.
 As such, we stop the calculations when any material ejected from the disk reaches these boundaries, and the shocks expanding through the midplane never approach the periodic boundaries during our models.
 For calculations performed at $R=10^3\,\Rs$, our domains span 96x96x128$\,H$ with a resolution of 960x960x1280 zones in the $x$, $y$, and $z$ dimensions, respectively.
 At $R=10^5\,\Rs$, the SN does not significantly expand in $z$, so we use a cubic domain that spans $24^3\,H$ at a resolution of 960x960x960.
-As shown later, the vertical disk profile shown in Eq.\,(\ref{eqn:disk-z-profile}) causes the shock to expand much more rapidly in the vertical direction than horizontally.
+As demonstrated later, the vertical disk profile shown in \eq{eqn:disk-z-profile} causes the shock to expand much more rapidly in the vertical direction than horizontally.
 Thus, our domains are constructed such that breakout from the disk occurs well before horizontal flows through the midplane could cross the $x$ or $y$ boundaries and break the assumption of an isolated SN for the run.
 
 
@@ -199,33 +210,33 @@ Thus, our domains are constructed such that breakout from the disk occurs well b
 \subsection{Results} \label{sec:results-ch3}
 
 \subsubsection{Breakout Parameter}
-Fig.~\ref{fig:breakout-midplane} shows the range of values for $\C$ using SG and TQM disk models generated with \code{pAGN} for 100 SMBH mass bins logarithmically spaced over the range $10^6 \leq \Mbh \leq 10^9\,\Msun$.
+\Fig{fig:breakout-sg} shows the range of values for $\C$ using SG disk models and \Fig{fig:breakout-tqm} shows thes ame for TQM disk models generated with the pAGN code for 100 SMBH mass bins logarithmically spaced over the range $10^6 \leq \Mbh \leq 10^9\,\Msun$.
 We start the TQM models at $\Mbh=10^{6.14}\,\Msun$ due to mass accretion rate limitations in this model for low-mass SMBHs.
 The orange region indicates where $\log_{10}\C>0$, meaning SNe with $10^{51}$ erg of energy will break free from the disk.
-The purple region indicates where $\log_{10}\C<0$ and these SNe will be muffled.
-We refer to the boundary between these two regions as the muffling radius $\Rb$.
+The purple region indicates where $\log_{10}\C<0$ and where SNe will be muffled.
+We refer to the boundary between these two regions as the muffling radius $\Rm$.
 The stars in the figure indicate the locations of our hydrodynamic models in this phase space whose results we describe in the next section.
-Overplotted are muffling radii as calculated by \citet{Moranchel+21} for scenarios when radiative cooling decreases the SN remnant's internal pressure ($\Rb^{(B)}$) and when it is not ($\Rb^{(A)}$).
+Overplotted are muffling radii as calculated by \citet{Moranchel+21} for scenarios when radiative cooling decreases the SN remnant's internal pressure ($\Rm^{(B)}$) and when it is not ($\Rm^{(A)}$, renamed from $R_b$ for use here).
 
 Around an SMBH with $M_{\rm BH}=10^6\,\msun$, the shock will break free from the disk at all radii out to $5\times10^6\,\Rs$.
-Shocks from SNe beyond this radius out to the disk edge at $10^7\,\Rs$ will be muffled and not break free.
+Shocks from SNe beyond this radius out to the disk edge at $10^7\,\Rs$ will be muffled and will not break free.
 The radius of this muffling boundary is inversely proportional to SMBH mass, decreasing to $\sim 6\times10^2\,\rs$ for $\Mbh=10^9\,\msun$.
 For SG disks around SMBHs with mass $10^9\,\Msun$, $H$ is consistently $10^3$ to $10^4$ times larger at all radii than for disks around those with masses of $10^6\,\Msun$ (c.f., Fig.~\ref{fig:disk-models}).
 Eq.\,(\ref{eqn:C}) most strongly depends on the scale height ($\propto H^{-3}$).
 Thus, puffier disks are more likely to obscure embedded SNe than thin disks.
 
 Beyond $R=10^3\,\Rs$ for disks around $\Mbh=10^8\,\Msun$, the SG model is unstable to collapse since Toomre's stability parameter $Q\approx\Omega^2/2\pi G\rho < 1$.
-To counteract this, they artificially set $Q=1$ by invoking some unknown source of energy that is possibly tied to in-disk star formation that makes the disk beyond this radius critically stable against gravitational collapse.
+To counteract this, they artificially set $Q=1$ by invoking some unknown source of energy that is possibly tied to in-disk star formation that makes the disk beyond this radius critically stable against gravitational collapse but could be attributed to SNe as well.
 For most SMBH masses the entire disk will allow SNe with $\mathbb{E}_{\rm SN}\geq10^{51}$\,erg to break free.
-At $\Mbh> 2\times10^8\,\Msun$, the muffling radius shrinks down to $R\approx100\,\Rs$ when $\Mbh=10^9\,\Msun$.
+At $\Mbh> 2\times10^8\,\Msun$, the muffling radius shrinks down to $\Rm\approx100\,\Rs$ when $\Mbh=10^9\,\Msun$.
 Since much of the disks will muffle SNe, they could be an additional component for maintaining pressure support.
 
 The results for the TQM disk (bottom panel of Fig.~\ref{fig:breakout-midplane}) demonstrate a different behavior.
 The muffling radius has no dependence on the SMBH mass such that $\C(10^6\,\Rs)=1$ for all masses.
 The range of values for $\C$ is more confined than the SG disk and ranging over $10^{-4}\leq \C \leq 10^5$.
-Additionally, the TQM disk model produces a peak in the breakout zone around $R=10^4\,\rs$ where $\C$ briefly reaches a local maximum before dropping off again at larger radii.
+Additionally, the TQM disk model produces a peak in the breakout zone around $\Rm=10^4\,\rs$ where $\C$ briefly reaches a local maximum before dropping off again at larger radii.
 Furthermore, for $\Mbh>10^7\,\msun$, this peak reaches $\log_{10}\C>5$, which decreases for lower SMBH masses.
-Finally, TQM disks around $\Mbh\sim10^6$ have relatively constant $\C$ at $10^2$ up to about $R\sim10^5\,\Rs$ before dropping towards the muffling radius at $10^6\,\Rs$, congruent with the general behavior.
+Finally, TQM disks around $\Mbh\sim10^6$ have relatively constant $\C$ at $10^2$ up to about $R\sim10^5\,\Rs$ before dropping towards the muffling radius at $\Rm=10^6\,\Rs$, congruent with the general behavior.
 This feature corresponds to a trough in the scale height in the TQM disk model due to sudden drops in temperature at this radius (right column of Fig.~\ref{fig:disk-models}), a feature missing from the SG disk model.
 
 Stars can be on inclined orbits meaning they need not lie precisely at the midplane when a SN occurs.
@@ -234,29 +245,30 @@ The muffling radius, where $\log_{10}\C=0$, shifts outwards in comparison to mid
 The reduced density away from the midplane offers less resistance, so shock breakout away from the midplane occurs more easily.
 
 \begin{figure}
-    \begin{subfigure}{0.5\textwidth}
     \centering
         \includegraphics[width=1\linewidth]{ch3_figs/breakout_sg_midplane.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.5\textwidth}
-    \centering
-        \includegraphics[width=1\linewidth]{ch3_figs/breakout_tqm_midplane.pdf}
-    \end{subfigure}
-	\caption[Breakout parameter $\C$ at height $z=0\,H$]{Breakout parameter $\C$ versus SMBH mass and radius in the accretion disk for SNe detonating at the disk midplane.
-    \emph{Top Panel:} In SG disks around SMBH with mass $10^6\,\msun$, SNe with energy $10^{51}\,{\rm erg\ s}^{-1}$ will strongly break free from all radii $\leq5\times10^6\,\Rs$.
+    \caption[Breakout parameter $\C$ at height $z=0\,H$ in a SG disk]{Breakout parameter $\C$ versus SMBH mass and radius in an SG accretion disk for SNe detonating at the disk midplane.
+    in disks around SMBH with mass $10^6\,\msun$, SNe with energy $10^{51}\,{\rm erg\ s}^{-1}$ will strongly break free from all radii $\leq5\times10^6\,\Rs$.
     The muffling radius decreases in $\Rs$ as SMBH mass increases, reaching $10^2\Rs$ for those with $M=10^9\,\Msun$.
     Stars indicate the $\Mbh$ and radial locations we use to set up our hydrodynamic shearing box simulations to test this prediction.
     The dashed line marks where \citet{Moranchel+21} calculated the muffling radius for SNe when radiative cooling is not important (their scenario A) which closely matches the line for $\C=1$.
-    The dotted line marks their scenario B in which radiative cooling becomes important by the free expansion phase, reducing the pressure interior to the shell.
-    \emph{Bottom Panel:} The same for TQM disks. The location of the muffling radius is located at $R_{\rm m}=10^6\,\Rs$ for all SMBH masses.}
-    \label{fig:breakout-midplane}
+    The dotted line marks their scenario B in which radiative cooling becomes important by the free expansion phase, reducing the pressure interior to the shell.}
+	\label{fig:breakout-sg}
+\end{figure}
+
+\begin{figure}
+    \centering
+        \includegraphics[width=1\linewidth]{ch3_figs/breakout_tqm_midplane.pdf}
+	\caption[Breakout parameter $\C$ at height $z=0\,H$ in a TQM disk]{
+	The same as \Fig{fig:breakout-sg} for TQM disks. The location of the muffling radius is located at $\Rm=10^6\,\Rs$ for all SMBH masses.}
+    \label{fig:breakout-tqm}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{ch3_figs/breakout_sg_z1H.pdf}
     \caption[Breakout parameter $\C$ at height $z=1\,H$]{Breakout parameter $\C$ for SNe at height $z=1\,H$ for an SG disk.
-    The lower density offers less resistance to the shock expansion, making breakout easier, and pushing the muffling boundary outward compared to midplane detonations in Fig.~\ref{fig:breakout-midplane}.
+    The lower density offers less resistance to the shock expansion, making breakout easier, and pushing the muffling boundary outward compared to midplane detonations in Fig.~\ref{fig:breakout-sg}.
     The star marks the location that our off-midplane run samples this analytic prediction.}
     \label{fig:breakout-sg-z1h}
 \end{figure}
@@ -264,7 +276,7 @@ The reduced density away from the midplane offers less resistance, so shock brea
 
 \subsubsection{Hydrodynamics}
 
-We test the muffling radius $Rb$ marked in red in Fig.~\ref{fig:breakout-midplane} for a disk orbiting a $10^8\,\msun$ SMBH by placing our hydrodynamic shearing boxes at $R=[10^3, 10^5]\,\rs$, which have breakout parameters $\C=[2.6, 0.04]$, respectively.
+We test the muffling radius $\Rm$ marked in red in Fig.~\ref{fig:breakout-sg} for a disk orbiting a $10^8\,\msun$ SMBH by placing our hydrodynamic shearing boxes at $R=[10^3, 10^5]\,\rs$, which have breakout parameters $\C=[2.6, 0.04]$, respectively.
 These parameters correspond to the stars in that figure.
 The top row of Fig.~\ref{fig:timeseries-composite-xz} shows a timeseries for a SNe at $R=10^3\,\Rs$ and the disk midplane $z_0=0$.
 In early times, the shock descends the pressure gradient of the disk and primarily expands vertically until it reaches $z=5\,H$ after 30 days where it is free to expand horizontally along the disk surface.
@@ -272,8 +284,8 @@ At this point, the hemispheric expansion evolves symmetrically about the midplan
 The middle row of Fig.~\ref{fig:timeseries-composite-xz} shows the SN placed at $R=10^5\,\rs$ and at the disk midplane.
 In contrast to the SN at $10^3\,\rs$, this one remains muffled, only reaching $z\sim1\,H$ over the 1200 years evolution.
 While the SN shock is physically contained at $R=10^5\,\Rs$, the SG disk model is optically thin at this location for $\Mbh \geq 10^7\,\msun$ leaving the possibility that the emitted photons still escape.
-The disks' radial range in each setup span the same number of scale heights $H$ but the full domains encompass drastically different volumes since $H=10$ AU vs. 16,000 AU, respectively.
-Stellar winds from massive SNe progenitors can carve cavities in the low density gas in the outer disk \citep{Fu-Lin+23}, but the large scale height at $R=10^4\,\Rs$ leaves them unresolved in our models.
+The disks' radial ranges in each setup span the same number of scale heights $H$ but the full domains encompass drastically different volumes since $H=10$ AU at $R=10^3\,\Rs$ vs. 16,000 AU $R=10^5\,\Rs$, respectively.
+Stellar winds from massive SNe progenitors can carve cavities in the low density gas in the outer disk \citep{Fu-Lin+23}, but the large scale height at $R=10^5\,\Rs$ leaves them unresolved in our models.
 
 The SNe in these two runs occurred directly at the disk midplanes, but in practice the dynamical nature of the AGN system means a star's orbit can be inclined relative to the accretion disk.
 The bottom row of Fig.~\ref{fig:timeseries-composite-xz} shows a time series for a setup identical to the top row except we offset the SN initialization vertically to $z_0=1\,H$.
@@ -329,7 +341,7 @@ This results in shock breakout occurring sooner and retaining more of its initia
 Conversely, the shock propagating towards the far side of the disk must climb the density and pressure gradient of the disk in order to reach the midplane.
 In a relatively low density disk, the flow may remain supersonic as it exits the opposite side, but if the disk is dense enough, or the path length to the other side is long enough, the flow may become subsonic well beforehand.
 The exact nature of this asymmetrically propagating shock has strong implications for whether radiation reaches two observers located on opposite sides of the disk.
-Similar behavior is seen in \citet{Grishin+21}.
+Similar evolution is seen in \citet{Grishin+21}.
 
 As the disk captures stars \citep{MacLeodLin20,Nasim+22} some orbits will begin relatively aligned with it while others will start on highly inclined orbits.
 By nature of the geometry, the star will always be embedded at the disk at the nodes where the two orbits intersect, and for circular orbits the star will be outside of the disk 90 degrees from the nodes when the inclination is large enough.
@@ -339,7 +351,7 @@ This holds for midplane SNe in a disk with a midplane density equal to the local
 
 To verify this, we placed a SN at the midplane of a disk with a midplane density equal to the density at $z=1H$ in the inclined SN model, i.e., $\rho_0=\rho_{\rm D}(z=1H)\approx5\times10^{-10}$ g cm$^{-3}$ using Eq.\,(\ref{eqn:disk-z-profile}).
 The morphology of the plumes that exit the disk are practically identical, but the horizontal expansion into the midplane is slightly larger at corresponding times owing to the lower density.
-The vertical shock breakout occurs 6 days ahead of a midplane SN in the denser disk and 10 days behind the inclined SN's, and having been slowed down as it climbed out from the midplane, the flow traveling along the disk surface has a slower velocity, reaching the boundary 13 days behind the inclined SN.
+The vertical shock breakout occurs 6 days ahead of a midplane SN in the denser disk and 10 days behind the inclined SN's. Having been slowed down as it climbed out from the midplane, the flow traveling along the disk surface has a slower velocity, reaching the boundary 13 days behind the inclined SN.
 
 Lateral shock expansion into the midplane is small, $\Delta r\approx 10\,H$ at $10^3\,\Rs$.
 The relative size of this cavity to its location is $\Delta r/R = 0.05$.
@@ -347,7 +359,8 @@ The evolution time is short relative to the orbital period, so the midplane cavi
 Over long times, on the order of the orbital period, the horizontal shock will stall as the shear elongates the cavity until it closes.
 Thus, a single SN will have minimal impact on the disk structure and the cavity will close as it stalls and the shear deforms it.
 
-If AGN disks with structures described by the SG model are common, then for a fiducial $\Mbh=10^8\,\Msun$, an observed AGN-SN would have occurred within $10^3\,\Rs$ ($<$1000 AU), corresponding to $\sim5$ light days, inside the broadline region that is a few light weeks to typically a light month in size depending on $\Mbh$ \citep{BlandfordMcKee82}.
+If AGN disks with structures described by the SG model are common, then for a fiducial $\Mbh=10^8\,\Msun$, any observed AGN-SN would have occurred within $10^3\,\Rs$ ($<$1000 AU), corresponding to $\sim5$ light days.
+This is inside the broadline region that is a few light weeks to typically a light month in size depending on $\Mbh$ \citep{BlandfordMcKee82}.
 This means that the response of the broadlines to the new SN illumination would be roughly symmetric.
 Conversely, if the SN happens at large radii in a lower density disk, then the response will be infrared-bright.
 Thus, the observational details allow us to use SN to infer its location and probe the disk's properties.
@@ -372,15 +385,15 @@ As magnetic fields build, the additional pressure becomes an important component
 Even fields that produce a plasma $\beta \equiv P_{\rm gas} / P_{\rm mag} = 10^{2.5}$ can elevate $H$ relative to disks with much weaker fields at $\beta=10^4$ \citep{Gerling-Dunsmore+25}.
 Since $H$ is the primary characteristic of an AGN disk for determining shock breakout, the magnetic fields could move the muffling radius inwards if the gas density remains similar to cases with no magnetic fields.
 In extreme cases, disk models following gas flows in cosmological simulations down to within a few Schwarzschild radii demonstrate buildup of strong magnetic fields reaching $\beta \sim 10^{-6} - 10^{-2} \ll 1$ \citep{Hopkins+25}.
-These flux-frozen disks suppress star formation entirely, implying the progenitors of AGN-SNe must be captured by the disk from the nuclear star cluster \citep{Fabj+20,Nasim+22}.
+These flux-frozen disks suppress star formation entirely, implying the progenitors of any AGN-SNe must be captured by the disk from the nuclear star cluster \citep{Fabj+20,Nasim+22}.
 
 In the case where star formation can occur in the disk, the AGN-SN rate is estimated to be $\dot{N}_{\rm SN}\sim10^{-2}\,{\rm yr}^{-1}$ for $\Mbh=10^8\,\Msun$ \citep{HuangLinShields23}.
 If the density of AGN in the Universe is $n_{\rm AGN}=10^6$ Gpc$^{-3}$ \citep{OsterbrockFerland06}, the rate density of AGN-SNe is $\mathcal{R_{\rm SN}} \sim 10^4$ yr$^{-1}$ Gpc$^{-3}$.
-Phenomena related to AGN activity may be visible for a range timescales spanning $10^4$ \citep{Morganti17} to $10^6$--$10^8$ yr \citep{Biava+21} depending on the specific mechanism being probed, but some modeling suggests the dense disks we consider here have a lifetime on the order of $\tau_{\rm AGN}=10^6$ yr \citep{Angles-Alcazar+21}.
+Phenomena related to AGN activity may be visible for a range timescales spanning $10^4$ yr \citep{Morganti17} to $10^6$--$10^8$ yr \citep{Biava+21} depending on the specific mechanism being probed, but some modeling suggests the dense disks we consider here have a lifetime on the order of $\tau_{\rm AGN}=10^6$ yr \citep{Angles-Alcazar+21}.
 Given $\dot{N}_{\rm SN}$ over that lifetime, the number of SNe that occur within the disk for a typical AGN is $\mathcal{N}_{\rm SN}=10^4$ AGN$^{-1}$.
 
 However, not all SNe will break free from the disk as we have shown.
-If we assume SNe occur evenly throughout a disk with outer radius of $10^7\,\Rs$ and a muffling radius at $\Rb\sim10^4\,\Rs$, then we need to scale by the fraction of the disk area that allows breakout $f_{\rm b} = (R_b / R_{\rm disk})^{2} = 10^{-6}$.
+If we assume SNe occur evenly throughout a disk with outer radius of $10^7\,\Rs$ and a muffling radius at $\Rm\sim10^4\,\Rs$, then we need to scale by the fraction of the disk area that allows breakout $f_{\rm b} = (\Rm / R_{\rm disk})^{2} = 10^{-6}$.
 Thus, the breakout rate per AGN becomes
 \begin{equation}
     \mathcal{N_{\rm b,SN}} \sim 10^{-2} \left( \frac{f_{\rm b}}{10^{-6}} \right) \left( \frac{\dot{N}_{\rm SN}}{\rm 10^{-2}\ \frac{SN}{yr\ AGN}} \right) \left( \frac{\tau_{\rm AGN}}{\rm 10^6\ yr} \right) \mathrm{AGN^{-1}},
@@ -394,14 +407,14 @@ This study explored the possibility of SN shocks breaking free from the disk.
 \citet{Moranchel+21} and \citet{Grishin+21} approached this question with different methods yet achieved similar results for midplane and off-set scenarios.
 Whether radiation emitted by a SNe can be observed against the bright AGN disk is a separate matter and depends on the optical depth through the disk to the detonation site.
 For example, even though the shock in the model placed at $R=10^5\,\Rs$ was muffled, the SG disk model is optically thin at that radius when $\Mbh=10^8\,\Msun$, and photons directly emitted a SN may still escape.
-We will present detailed post-processing radiative transfer calculations to derive light curves for our shearing box simulations in a companion paper.
+We will present detailed post-processing radiative transfer calculations to derive light curves for our shearing box simulations in the following chapter.
 
 As large surveys like the Legacy Survey of Space and Time (LSST) generate baselines for substantially more AGN \citep{Kovacevic+22}, if we are able to constrain the rates of observable and non-observable AGN-SN, we will also have constraints on AGN disk properties such has their sizes and densities.
 If the rate is small, then either most SNe are muffled in a puffed-up, low-density AGN disk or the disk is typically small.
 In contrast, a large rate suggests AGN disks are likely large, geometrically thin, dense, and thus able to capture or produce stars at a high rate.
 
-Though we have considered Type II SNe ejecting $10\,\msun$ envelopes, AGN-embedded stars may not evolve similarly to stars in the field, changing our rate estimates and details of the explosions such as the ejecta mass and energy of the SN \citep{CantielloJermynLin21, DittmannJermynCantiello23}.
-Similarly, Type Ia novae from accreting white dwarfs and kilonovae from binary neutron stars formed by the disk likely evolve differently when embedded in an AGN disk.
+Though we have considered Type II SNe ejecting $10\,\msun$ envelopes, AGN-embedded stars may not evolve like stars in the field, changing our rate estimates and details of the explosions such as the ejecta mass and energy of the SN \citep{CantielloJermynLin21, DittmannJermynCantiello23}.
+Similarly, Type Ia novae from accreting white dwarfs and kilonovae from binary neutron stars formed by the disk, also possible sources of AGN transients, likely evolve differently when embedded in an AGN disk.
 
 % ======================
 % ======================
@@ -410,7 +423,7 @@ Similarly, Type Ia novae from accreting white dwarfs and kilonovae from binary n
 \label{sec:conclusions-ch3}
 Massive stars in nuclear star clusters on orbits embedded in AGN accretion disks may detonate as SN from within the disk.
 The shock can break free from the disk if its internal pressure exceeds the ambient disk pressure and is muffled otherwise.
-The exact outcome depends on the \textbf{radial and vertical location} of the detonation as described by Eq.\,(\ref{eqn:C-parameterized}).
+The exact outcome depends on the radial and vertical location of the detonation as described by Eq.\,(\ref{eqn:C-parameterized}).
 We performed hydrodynamic three-dimensional shearing box simulations at two locations on either side of the muffling boundary of embedded SNe and found agreement with the analytic prediction for shock breakout from an SG-type AGN disk orbiting a black hole of mass $\Mbh=10^8\,\Msun$.
 Specifically, we found:
 
@@ -428,7 +441,7 @@ Specifically, we found:
 
 As Vera Rubin Observatory and LSST expand our transient catalogs, automated search algorithms may identify light curves with previously-unobserved characteristics or features.
 One potential source of these new transients could be AGN-embedded SNe whose light curves are altered by an AGN disk.
-In a companion paper we will describe results from our radiative transfer analysis of the models presented here.
+In the following chapter we will describe results from our radiative transfer analysis of the models presented here.
 Combining radiative and kinematic SNe muffling may reveal information about an average disk's structure, leading to a broader understanding of AGN accretion physics and galactic nuclei in general.
 
 
