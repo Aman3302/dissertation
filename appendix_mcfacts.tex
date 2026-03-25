@@ -1,12 +1,11 @@
-% Appendix section explaining the specifics of our radiative transfer model
 \addtocontents{toc}{\protect}
-\section{\texorpdfstring{\MakeUppercase{the mcfacts code: monte carlo method\\for black hole mergers in agn disks}}{the mcfacts code: monte carlo method\\for black hole mergers in agn disks}}
+\section{\texorpdfstring{\MakeUppercase{the mcfacts code: monte carlo method for black hole mergers in agn disks}}{the mcfacts code: monte carlo method for black hole mergers in agn disks}}
 \label{sec:apdx-mcfacts}
 
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
 
-The contents of this appendix was published in \citet{McKernan+25-mcafactsI}. Please use that reference when citing this section.
+The contents of this appendix was published in \citet{McKernan+25-mcfactsI}. Please use that reference when citing this section.
 
 Fig.~\ref{fig:overview} gives a basic overview of the flow of BH through categories in \code{McFACTS}, starting from an initial eccentric BH population of singleton BH in the AGN disk (top left).
 Solid arrows indicate a flow from one category to another and dotted arrows indicate influence from one category on another.
@@ -15,6 +14,11 @@ Binary BH are formed from among the circularized population (connecting solid re
 BBH, once formed can dynamically interact with both the eccentric and circularized single BH and the spheroid population (the three dotted red arrows onto Binary BH in Fig.~\ref{fig:overview}).
 BBH can flow to softer BBH and ionize, via dynamics (solid red arrows) returning their components back to the eccentric disk BH population, but BBH can also harden via gas and dynamics (blue and red arrows) and ultimately merge, whereupon they either flow back into the eccentric BH population or into the spheroid (from where they can be re-captured generally circularized).
 A small sub-population of the initial eccentric population and the spheroid population can flow into the inner disk, where some BH can decay via GW emission and become EMRIs (blue box).
+\begin{figure*}   \includegraphics{appdx_figs/McFacts_flowchart.pdf}
+    \caption{Flow diagram indicating how BH are categorized in \texttt{McFACTS} and how BH are exchanged between these categories. Solid arrows indicate a flow of objects from one category to another and dotted arrows indicate an influence of one category on another. Red denotes dynamics, blue denotes gas. Objects in orange (grey) boxes are in the disk (spheroid). EMRIs are in the blue box. For example, there is a flow from the initially eccentric BH population to the circularized BH population due to gas damping (blue arrow), but the eccentric BH population also has a dynamical influence on the circularized BH population (red dotted line) leading to a reverse flow (red solid line). 
+    }
+    \label{fig:overview}
+\end{figure*}
 
 Objects in their disks have their physical parameters manipulated in a consistent algorithmic manner via the \verb|AGNObject| class.
 This class will be extended from just BH to stars, neutron stars, and white dwarfs in future updates to the code.
@@ -315,7 +319,7 @@ A kick can put a newly merged BH back in the eccentric BH population and we remo
 
 Finally, we allow for the creation of new binaries.
 We assume that BH binaries (BBH) can form once they encounter each other on circularized prograde orbits ($e<e_{\rm min,crit}$) within $R_{\rm H}=a_{\rm bin,orb}(q/3)^{1/3}$ with $q=M_{\rm bin}/M_{\rm SMBH}$ and $a_{\rm orb}$ is the mass-weighted binary center of mass.
-We intend to incorporate a wider range of binary formation conditions \citep{Stan+23,Rowan+23,Qian+24,Whitehead+24} in future versions of the code.
+We intend to incorporate a wider range of binary formation conditions \citep{Stan+23,Rowan+23,QianLiLai24,Whitehead+24} in future versions of the code.
 Note that all binaries are required to be on initially circular orbits around the SMBH, since we do not permit binary formation for non-circular objects.
 
 We note that the removal of objects from the inner spheroid (as the spheroid is depleted due to disk interactions) corresponds to disk captures of new objects---we assume BH are captured by this disk model at a fixed rate of $1/0.1$Myr \citep{Secunda+21}, drawn uniformly from the IMF distribution and deposited at small disk radii ($<2000\,r_{g}$)

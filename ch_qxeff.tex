@@ -18,7 +18,7 @@ The preferred fraction of prograde-to-retrograde is $>90\%$, to produce results 
 
 Here we present a study using the \code{McFACTS} code \citep[Monte Carlo For AGN Channel Testing and Simulations:][]{McKernan+25-mcfactsI} to test the predictions of the AGN channel for the $q$--$\Xeff$ distribution across a wide range of parameter space in both AGN disk and NSC models, with a view to tightly constraining requirements on the AGN channel.
 \citet{Delfavero+25} presents the first study of the AGN channel in a semi-realistic Universe of AGN and NSCs.
-\code{McFACTS} features substantial improvements to the Monte Carlo code used in \citet{McKernan+20a} to explore $\Xeff$ of mergers in AGN and \citet{Mckernan+22:q-Xeff} who explored the $q$--$\Xeff$ anti-correlation.
+\code{McFACTS} features substantial improvements to the Monte Carlo code used in \citet{McKernan+20a} to explore $\Xeff$ of mergers in AGN and \citet{McKernan+22:q-Xeff} who explored the $q$--$\Xeff$ anti-correlation.
 The greater flexibility for exploring parameter space includes many improved models for disk-NSC interactions such as dynamical encounters, orbital migration, and binary evolution.
 
 
@@ -34,9 +34,36 @@ where $\vec{\chi}_{1,2}$ are the dimensionless spin parameters associated with $
 
 \begin{figure}
 	\centering
-	\includegraphics[width=1\textwidth]{xeff-diagram-eqns.pdf}
+	\includegraphics[width=1\textwidth]{ch_qxeff_figs/xeff-diagram-eqns.pdf}
 	\caption[Effective Spin Diagram]{Diagram of the components in Eq.~\ref{eqn:Xeff} needed to calculate the effective spin $\Xeff$ measured for a merger event.}
 \end{figure}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\textwidth]{ch_qxeff_figs/santini+23_qxeff_channels.pdf}
+	\caption[The $q$-$\Xeff$ plane for different formation channels]{The $q$-$\Xeff$ distributions for BBH mergers originating in various binary formation channels.
+	\emph{Left:} Isolated field binary stars.
+	\emph{Left of center:} Globular clusters.
+	\emph{Right of center:} AGN disks with retrograde and prograde binary angular momenta.
+	\emph{Right:} AGN disks with only prograde binary angular momenta.
+	Figure taken from \citet{Santini+23}.
+	}
+	\label{fig:qxeff-channels}
+\end{figure}
+
+There are several formation channels for forming BBH.
+\citet{Santini+23} explored how the $q$-$\Xeff$ plane would appear like for three possible formation scenarios shown in \Fig{fig:qxeff-channels}, which is reproduced from their paper.
+The left panel shows this for binary stellar companions whose orbits are close enough to experience periods of common-envelope evolution, that cause there orbits to shrink enough for GW radiation to shrink their orbits further.
+In this scneario it is most likely that both stars formed from the same molecular cloud and have the same rotational angular momentum which restricts $\Xeff$ to be $>0$.
+Another common pathway for BBH formation is through dynamical interactions in globular clusters and NSCs shown in the left-of-center panel.
+In these environments stars and black holes frequently encounter each other, exchanging partners, and shrinking their orbits, again, until GW radiation takes over.
+Binaries formed here will have randomly oriented spins, and $\Xeff$ can be either negative or positive but will be evenly distributed about $Xeff=0$.
+As discussed in the previous chapter, the presense of an accretion disk will align orbits of NSC objects to be fully embedded within its confines over time.
+Thus, when binaries form due to encounters along similar trajectories, $\hat{L}_\text{bin}$ will preferentially align with the disk orbital angular momentum, causing $\Xeff$ to be more restricted than when no disk is present despite the fact that $\chi_i$ for any newly captured BH will be randomly oriented, as shown in the right panels.
+Since merger remnants primarily inherit their spins from $L_\text{bin}$, $\Xeff$ becomes progressively more aligned or anti-aligned with the disk depending on whether both prograde $\L_\text{bin} \cdot \L_\text{disk} = +1$ and retrograde $\L_\text{bin} \cdot \L_\text{disk} = -1$ or only prograde binaries form.
+Merger remnants in dynamical channels are more likely to merge again in what is called a hierarchical merger scenario, each time increasing their mass and spin, which is reflected in the wider distribution in $\Xeff$ at low $q$ since more massive BHs are more likely to capture less massive companions.
+
 
 Throughout this text we will refer to a BH that formed through stellar evolution processes as a first generation, or a 1g, BH.
 Each merger event increases the generation of the highest generation component by one such that a 2g$-$4g merger event produces a 5g remenant.
@@ -339,7 +366,7 @@ The 2g sample (purple triangles) has a mean mass ratio of $\barq({\rm 2g})=0.55\
 The paucity of hierarchical mergers results in an essentially flat $d\chi/dq=-0.03\pm0.01$ slope.
 
 Qualitatively, both plots tell us populations of higher generation mergers tend to have higher \textit{positive} $\Xeff$.
-This trend is visible in $\overline{\Xeff}$ (see Table~\ref{tab:popstats}), reflecting what was seen in \citet{Mckernan+22:q-Xeff}.
+This trend is visible in $\overline{\Xeff}$ (see Table~\ref{tab:popstats}), reflecting what was seen in \citet{McKernan+22:q-Xeff}.
 Because we initialized BH spin orientations randomly, we expect $\Xeff\sim0$ for 1g events.
 However, their remnants receive a natal spin of $\chi \sim 0.7$ directed along the progenitor binary's angular momentum $\vec{L}_{\rm bin}$.
 Since we limit BBH to form prograde by default, $\vec{\chi}$ tends to point parallel to the disk angular momentum (positive).
@@ -347,7 +374,7 @@ A BH's mass and spin magnitude increase with generation, so we expect the hierar
 
 We include a selection of GW sources in the left column of Fig.~\ref{fig:default-imf} as teal data points: GW190412, GW190521, GW190814, GW200115\_042309, GW200208\_222617, GW200210\_092254, 
 and finally the location of the recent event  GW231123, is marked with a red-orange ``x"
-\citep{Abbott+20-GW190521astro,Abbott+20-GW190521,Abbott+23-O3b,Abbot+24:GWTC-2.1,LVK+25-GW231123}.
+\citep{Abbott+20-GW190521astro,Abbott+20-GW190521,Abbott+23-O3b,Abbott+24:GWTC-2.1,LVK+25-GW231123}.
 We use reported mass ranges to calculate the estimated errors in the mass ratio.
 The central point near $q=0.6$ is GW190521 and overlaps mostly with the 1g population.
 
@@ -760,7 +787,7 @@ Thus, low density disks with dynamically cooled populations could contribute to 
 \label{sec:discussion-qxeff}
 One of the most intriguing results to emerge from the LVK O3 GW results was an apparent anti-correlation between BBH mass ratio ($q=M_{2}/M_{1}$) and the BBH effective spin \citep[$\Xeff$,][]{Callister+21}.
 At first glance this seems unexpected from most channels.
-The AGN channel was recognized as a possible source of such an anti-correlation simply because: a) the primary BH ($M_{1}$) in BBH should spend longer in the AGN disk and so, b) primary BH ($M_{1}$) spins should be biased towards alignment with the orbital angular momentum of the disk (and the BBH) \citep[e.g.][]{Mckernan+22:q-Xeff,Santini+23, DittmannDempseyLi24}.
+The AGN channel was recognized as a possible source of such an anti-correlation simply because: a) the primary BH ($M_{1}$) in BBH should spend longer in the AGN disk and so, b) primary BH ($M_{1}$) spins should be biased towards alignment with the orbital angular momentum of the disk (and the BBH) \citep[e.g.][]{McKernan+22:q-Xeff,Santini+23, DittmannDempseyLi24}.
 Here we have demonstrated the form of the $q$--$\Xeff$ parameter space distribution as a function of different disk and model choices for the AGN channel.
 
 First, and most importantly, our default choice of a SG disk run for 0.5 Myr with a $\gamma=2$ IMF seems to be a reasonable fit to the observed $q$--$\Xeff$ distribution (see \Fig{fig:default-imf} top left panel).
