@@ -175,7 +175,7 @@ Then, we demonstrate the effects of changing various input parameters on $q$--$\
 
 \subsubsection{Reproducibility}
 Data used in each panel of the figures in this paper can be reproduced using the correct seed and input parameters.
-In the \code{Makefile}, change the \code{SEED} parameter to the value listed in Table~\ref{tab:run-parameters-A} and .
+In the \code{Makefile}, change the \code{SEED} parameter to the value listed in Table~\ref{tab:run-parameters} and .
 For random seeds using \code{Makefile}, add an empty line above \code{--seed}, comment out the \code{--seed} line and save the file.
 If a parameter needs to be changed, in each case, use the \code{model_choice_old.ini} file and change the appropriate parameter there.
 The default timestep is set to $10^4$ yrs.
@@ -187,22 +187,23 @@ Use \code{nsc_imf_powerlaw_index} to control the slope of the probability distri
 The parameter \code{nsc_bh_spin_dist_sigma} controls the width of the normal distribution from which initial BH spins are drawn.
 The parameter \code{fraction_bin_retro} controls the fraction of retrograde binaries allowed to form with angular momenta pointing opposite to the disk's.
 
-\begin{center}
+\renewcommand{\arraystretch}{1}
 \begin{table}[htbp]
+\centering
 {\footnotesize
-\begin{tabular}{r|cc}
+\begin{tabular}{rcc}
     Parameter & Default value & Units \\
     \hline\hline
     \code{smbh_mass} & $10^{8}$ & $M_{\odot}$ \\
     \hline
     \code{disk_model_name} & \code{sirko_goodman} & \\
     \code{flag_use_pagn} & 1 & \\
-    \code{disk_radius_trap} & 700 & $\rm{r}_{g,\rm{SMBH}}$ \\
-    \code{disk_radius_outer} & $5\times 10^{4}$ & $\rm{r}_{g,\rm{SMBH}}$ \\
+    \code{disk_radius_trap} & 700 & $\Rg$ \\
+    \code{disk_radius_outer} & $5\times 10^{4}$ & $\Rg$ \\
     \code{disk_radius_max_pc} & 0 & \\
     \code{disk_alpha_viscosity} & 0.01 & \\
-    \code{inner_disk_outer_radius} & $50$ & $\rm{r}_{g,\rm{SMBH}}$ \\
-    \code{disk_inner_stable_circ_orb} & $6$ & $\rm{r}_{g,\rm{SMBH}}$ \\
+    \code{inner_disk_outer_radius} & $50$ & $\Rg$ \\
+    \code{disk_inner_stable_circ_orb} & $6$ & $\Rg$ \\
     \code{disk_aspect_ratio_avg} & $0.03$ &  \\
     \hline
     \code{nsc_radius_outer} & 5 & pc\\
@@ -223,7 +224,7 @@ The parameter \code{fraction_bin_retro} controls the fraction of retrograde bina
     \code{disk_bh_torque_condition} & 0.1 & \\
     \code{disk_bh_eddington_ratio} & 1.0 & \\
     \code{disk_bh_orb_ecc_max_init} & 0.3 & \\
-    \code{disk_radius_capture_outer} & $10^{3}$ & $\rm{r}_{g,\rm{SMBH}}$ \\
+    \code{disk_radius_capture_outer} & $10^{3}$ & $\Rg$ \\
     \code{disk_bh_pro_orb_ecc_crit} & 0.01 & \\
     \code{mass_pile_up} & 35 & $M_{\odot}$\\
     \code{timestep_duration_yr} & $10^{4}$ & yr\\
@@ -245,10 +246,9 @@ The parameter \code{fraction_bin_retro} controls the fraction of retrograde bina
 \caption[Default \code{McFACTS} input parameters]{Default input parameters for the SMBH, AGN disk and NSC as well as physics choices in \texttt{p1\_model\_default.ini}.}
 \label{tab:default_model}
 \end{table}
-\end{center}
 
-\begin{center}
 \begin{table}[htbp]
+\centering
 {\footnotesize
 \begin{tabular}{lclc}
     Run & Seed & Parameter & Value \\
@@ -278,21 +278,6 @@ The parameter \code{fraction_bin_retro} controls the fraction of retrograde bina
     \code{tqm_s0p02} & 74447390 & \code{nsc_bh_spin_dist_sigma} & 0.02 \\
     \code{tqm_s0p20} & 10409162 & \code{nsc_bh_spin_dist_sigma} & 0.20 \\
     \hline
-\end{tabular}
-}
-\caption[Parameter choices for McFACTS runs]{Unique parameters choices and random number generator seeds for each run.
-	All other parameters are unchanged from those in the default models, which are otherwise identical to those in Table~\ref{tab:default_model}.
-Continued in Table~\ref{tab:run-parameters-A}}
-\label{tab:run-parameters-A}
-\end{table}
-\end{center}
-
-\begin{center}
-\begin{table}[htbp]
-{\footnotesize
-\begin{tabular}{lclc}
-    Run & Seed & Parameter & Value \\
-    \hline\hline
     \code{sg_fr0p1} & 38049133 & \code{fraction_bin_retro} & 0.1 \\
     \code{sg_fr0p5} & 28559955 & \code{fraction_bin_retro} & 0.5 \\
     \code{tqm_fr0p1} & 10171242 & \code{fraction_bin_retro} & 0.1 \\
@@ -313,10 +298,10 @@ Continued in Table~\ref{tab:run-parameters-A}}
     \code{tqm_e0} & 92269440 & \code{disk_bh_orb_ecc_max_init} & 0.0
 \end{tabular}
 }
-\caption[Parameter choices for McFACTS runs (cont.)]{Continuation of \ref{tab:run-parameters-A}.}
-\label{tab:run-parameters-B}
+\caption[Parameter choices for McFACTS runs]{Unique parameters choices and random number generator seeds for each run.
+	All other parameters are unchanged from those in the default models, which are otherwise identical to those in Table~\ref{tab:default_model}.}
+\label{tab:run-parameters}
 \end{table}
-\end{center}
 
 
 \subsubsection{Default Models}
@@ -394,7 +379,7 @@ This suggests that GW231123 is a hierarchical merger between progenitors that pr
     \textit{Bottom left:} default setup for a \citet{ThompsonQuataertMurray05} disk, run \code{tqm_default}.
     \textit{Right column:} same as SG and TQM defaults but with shallower IMF index of $\gamma=1$ that increases the probability for high-mass BH.
     Each experiment was performed for 100 galaxies.
-    See Table~\ref{tab:run-parameters-A} for setup parameters and Table~\ref{tab:popstats} for population statistics.}
+    See Table~\ref{tab:run-parameters} for setup parameters and Table~\ref{tab:popstats} for population statistics.}
     \label{fig:default-imf}
 \end{figure}
 
@@ -495,7 +480,7 @@ This overall steepening primarily points to a correlation between $\tauAGN$ and 
     \textit{Bottom row:} TQM disk setups with $\tauAGN=2.5$, 3, and 5 Myr.
     The anti-correlation steepens with lifetime in dense SG disks as more hierarchical mergers with large $\Xeff$ occur, but $\tauAGN$ has little impact on low density TQM disks.
     Markers are as in \Fig{fig:default-imf}.
-    See Table~\ref{tab:run-parameters-A} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
+    See Table~\ref{tab:run-parameters} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
     \label{fig:time}
 \end{figure}
 
@@ -513,7 +498,7 @@ Not shown here, the behavior in TQM disks continues as long as 10 Myr.
     \textit{Bottom row:} TQM disk setups with $\tauAGN=2.5$, 3, and 5 Myr.
     Hierarchical mergers drive up the mass of remnants in SG disks with increased lifetime, whereas TQM disks quickly merge BH on near circular orbits but low migration rates suppresses subsequent interactions to increase remnant masses beyond $\sim80\,\Msun$.
     Markers are as in \Fig{fig:default-imf}.
-    See Table~\ref{tab:run-parameters-A} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
+    See Table~\ref{tab:run-parameters} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
     \label{fig:time-mass}
 \end{figure}
 
@@ -546,7 +531,7 @@ This has a strong influence on the measured slope which decrease as radius incre
     Both decreases and increases in disk radius result in fewer mergers.
     Model name left-to-right, top-to-bottom: \code{sg_r2e4}, \code{sg_default}, \code{sg_r7e4}, \code{tqm_r2e4}, \code{tqm_default}, and \code{tqm_r7e4}.
     Markers are as in \Fig{fig:default-imf}.
-    See Table~\ref{tab:run-parameters-A} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
+    See Table~\ref{tab:run-parameters} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
     \label{fig:radius}
 \end{figure}
 
@@ -604,7 +589,7 @@ TQM models produce similar results for 1g mergers, but the number of hierarchica
     \textit{Bottom row:} Same as top row but for a TQM disk model (\code{tqm_0p02}, \code{tqm_default}, \code{tqm_0p2}).
     Narrower (wider) spin magnitude distributions primarily affect the 1g population by narrowing (widening) the distribution in $\Xeff$.
     Markers are as in \Fig{fig:default-imf}.
-    See Table~\ref{tab:run-parameters-A} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
+    See Table~\ref{tab:run-parameters} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
     \label{fig:spin}
 \end{figure}
 
@@ -656,7 +641,7 @@ Though this disk model is plagued by low number statistics for hierarchical merg
     Increasing allowed retrograde fraction splits the hierarchical population to negative $\Xeff$ and flattens the slopes of the anti-correlation for SG-like disks.
     The TQM model (bottom row, \code{tqm_default}, \code{tqm_fr0p1}, \code{tqm_fr0p5}) reflects this behavior but the hierarchical population still suffers from low numbers.
     Markers are as in \Fig{fig:default-imf}.
-    See Table~\ref{tab:run-parameters-A} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
+    See Table~\ref{tab:run-parameters} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
     \label{fig:retro}
 \end{figure}
 
@@ -689,7 +674,7 @@ Since more BH spend a longer time participating in mergers, the $\geq$3g hierarc
     SG disk with NSC initial eccentricity capped at $e_{\rm max}=0.1$ (left, \code{sg_e0p1}), 0.3 (center, \code{sg_default}), and 0.5 (right, \code{sg_0p5}).
     The number of mergers is inversely proportional to initial eccentricity.
     Markers are as in \Fig{fig:default-imf}.
-    See Table~\ref{tab:run-parameters-A} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
+    See Table~\ref{tab:run-parameters} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
     \label{fig:ecc-sg}
 \end{figure}
 
@@ -712,7 +697,7 @@ This can be tested in LVK O4.
     \textit{Right:} Thermal NSC with SG disk lifetime increased to $\tauAGN=0.75$ Myr (\code{sg_e0p7_t0p75}).
     A more eccentric initial BH population takes longer to circularize which increases the time to produce mergers.
     Markers are as in \Fig{fig:default-imf}.
-    See Table~\ref{tab:run-parameters-A} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
+    See Table~\ref{tab:run-parameters} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
     \label{fig:ecc-sg-thermal}
 \end{figure}
 
@@ -733,7 +718,7 @@ However, there are over 60 times as many 1g mergers, and the anti-correlation's 
     TQM disk with NSC initial eccentricity capped at $e_{\rm max}=0.015$ (left \code{tqm_e0p015}), 0.05 (center \code{tqm_default}), and 0.1 (right, \code{tqm_e0p1}).
     The number of mergers is inversely proportional to initial eccentricity, and an extremely low eccentricity is required for the TQM model to produce an appreciable number of hierarchical mergers as opposed to the SG model.
     Markers are as in \Fig{fig:default-imf}.
-    See Table~\ref{tab:run-parameters-A} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
+    See Table~\ref{tab:run-parameters} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
     \label{fig:ecc-tqm}
 \end{figure}
 
@@ -766,7 +751,7 @@ Thus, low density disks with dynamically cooled populations could contribute to 
     \textit{Center:} Setup same as \tqmdefault but with circular BH orbits ($\tauAGN=3$ Myr; \code{tqm_e0}).
     \textit{Right:} Default TQM setup where $\tauAGN=3$ Myr and initial eccentricity is capped at $\emax=0.05$ (\code{tqm_default}).
     Markers are as in \Fig{fig:default-imf}.
-    See Table~\ref{tab:run-parameters-A} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
+    See Table~\ref{tab:run-parameters} for unique setup parameters and Table~\ref{tab:popstats} for population statistics.}
     \label{fig:ecc-tqm-circular}
 \end{figure}
 

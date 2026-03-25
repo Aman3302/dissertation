@@ -154,14 +154,14 @@ The evolution of their semi-major axis, eccentricity, and inclination angle due 
 Retrograde orbiters evolve remarkably quickly into inner disk objects, if their argument of periapse, $\omega$ is near 0 or 180 degrees, while their orbits remain extremely stable over long periods if $\omega=90$ or $270$ degrees.
 To properly compute their trajectories, ideally we would use an N-body code such as \code{SpaceHub}, as demonstrated in \cite{WangZhuLin24}.
 However, such a strategy is computationally expensive, and so we instead use a crude approximation of their expected behavior, based on several key examples computed in \cite{WangZhuLin24}.
-We assume orbiters have $\omega$ either 0 or 90 degrees to cover the limiting cases, and for $\omega=0^{o}$ we assume their behavior follows that of the example shown in \cite{WangZhuLin24} Figure 12, where they compute the exact evolution for a black hole of $m_{\rm BH} = 30\,M_{\odot}$, $i_0=175^{o}$, $e_0=0.7$, $a_0=100\,r_g$ around a $M_{\rm SMBH}=10^8 \,M_{\odot}$ black hole, with an assumed surface density profile that matches \cite{SirkoGoodman03}.
+We assume orbiters have $\omega$ either 0 or 90 degrees to cover the limiting cases, and for $\omega=0^{o}$ we assume their behavior follows that of the example shown in \cite{WangZhuLin24} Figure 12, where they compute the exact evolution for a black hole of $m_{\rm BH} = 30\,M_{\odot}$, $i_0=175^{o}$, $e_0=0.7$, $a_0=100\,\Rg$ around a $M_{\rm SMBH}=10^8 \,M_{\odot}$ black hole, with an assumed surface density profile that matches \cite{SirkoGoodman03}.
 For such orbiters, they show 3 periods of evolution:
 
 First, an orbiter will radialize (increase eccentricity) at the fastest timescale, decrease its semimajor axis (more slowly), and decrease its inclination angle (very slowly).
 Second, once the orbiter has reached a very large (nearly radial) eccentricity, it will decrease its inclination angle (very quickly), flipping towards a prograde orbit quite suddenly, while now decreasing its eccentricity and circularizing (more slowly than the prior radializing timescale), and doing this at approximately constant semimajor axis.
 Third, the inclination angle will continue to decrease extremely quickly until it is identically zero, while also continuing to circularize and shrink its semimajor axis (these latter two processes are slower than migration of circular prograde objects).
 
-We retrieve the timescales and changes in parameters for each phase of this evolution from Figure 12 (specifically, stage 1 is $\sim1.5\times10^5$~yr, when $e=0.7\rightarrow 0.9999$, $a=100\rightarrow60~r_g$, $i=175\rightarrow165^{o}$; stage 2 is $\sim10^4$~yr, when $i=165\rightarrow12^{o}$, $e=0.9999\rightarrow0.9$, $a=60~r_g$; and stage 3 is $\sim10^4$~yr, when $i=12\rightarrow0.0^{o}$, $e=0.9\rightarrow0.5$, $a=60\rightarrow20~r_g$).
+We retrieve the timescales and changes in parameters for each phase of this evolution from Figure 12 (specifically, stage 1 is $\sim1.5\times10^5$~yr, when $e=0.7\rightarrow 0.9999$, $a=100\rightarrow60~\Rg$, $i=175\rightarrow165^{o}$; stage 2 is $\sim10^4$~yr, when $i=165\rightarrow12^{o}$, $e=0.9999\rightarrow0.9$, $a=60~\Rg$; and stage 3 is $\sim10^4$~yr, when $i=12\rightarrow0.0^{o}$, $e=0.9\rightarrow0.5$, $a=60\rightarrow20~\Rg$).
 Then, for any object in McFACTS, we scale the timescales for each phase according to Eqns 70-73 in \cite{WangZhuLin24}:
 
 \begin{equation}
@@ -207,7 +207,7 @@ Here $p=a(1-e^2)$ is the semi-latus rectum of the orbit, $T=2\pi \sqrt{a^3/GM_{\
 \end{equation}
 
 For objects with $\omega=90$~degrees, the evolution is qualitatively different, with monotonic behavior in $a$, $e$, and $i$, such that the semimajor axis will decrease quite slowly, while the eccentricity will circularize even more slowly, and the inclination angle will decrease slowest of all.
-We scale the behavior for an orbiter identical to the first example, except for $\omega$, using scaling for timescales derived from \cite{WangZhuLin24} Figure 8 (specifically, in $\sim1.5 \times10^7~$yr $a=100\rightarrow60\,r_g$, $e=0.7\rightarrow0.5$, $i=175\rightarrow170^{o}$).
+We scale the behavior for an orbiter identical to the first example, except for $\omega$, using scaling for timescales derived from \cite{WangZhuLin24} Figure 8 (specifically, in $\sim1.5 \times10^7~$yr $a=100\rightarrow60\,\Rg$, $e=0.7\rightarrow0.5$, $i=175\rightarrow170^{o}$).
 We do not yet compute dynamical interactions between retrograde orbiters and prograde orbiters (or indeed between retrograde orbiters), as the timescales for their interactions are quite short---half of the initially embedded retrograde orbiters evolve into EMRIs in the first few timesteps (i.e. those with $\omega=0$~degrees), while the remainder evolve so slowly they are relatively unlikely to encounter any individual prograde object, which is typically moving more quickly through the disk.
 However, rare encounters could be extremely high energy, and we plan to add such interactions in future versions.
 
