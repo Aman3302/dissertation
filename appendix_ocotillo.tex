@@ -1,14 +1,14 @@
-% Appendix section explaining the specifics of our radiative transfer model
-\section{RADIATIVE TRANSFER MODEL} \label{sec:Appendix-RTModel}
+\addtocontents{toc}{\protect}
+\section{\texorpdfstring{\MakeUppercase{ocotillo: post-processing radiative\\transfer model}}{ocotillo: post-processing radiative\\transfer model}}
+\label{sec:Appendix-RTModel}
 
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
 
-\subsection{Implicit Feautrier Radiative Transfer Method}\label{sec:Apdx-Feautrier}
+\subsection{Feautrier Radiative Transfer Method}
+\label{sec:Apdx-Feautrier}
 
-
-
-Here we show our derivation of the implicit Feautrier method used in our post-processing radiative transfer calculation.
+Here we show our derivation of the implicit Feautrier method used in our post-processing radiative transfer calculation which forms the core of the Ocotillo code.
 It is apropriate for the general case where extinction occurs via absorption and scattering processes.
 
 To begin, we adopt the two stream Eddington approximation for the radiation field by taking $\theta = 0$ (along z) and $\pi$ (opposite to z) in \eq{eqn:RadTrans}.

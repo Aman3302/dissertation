@@ -7,13 +7,15 @@
 
 
 \subsection{Updates to McFACTS}
-In future studies we will produce a realistic distribution of SMBH and NSC masses, appropriate to our Universe, and consider the impact of those parameters on the $q$--$\Xeff$ relationship.
-
-We intend to implement models derived from these works in future versions of the code.
-
-Radiation from accreting objects can cause an additional eccentricity pumping term \citep{Cornejo+23}.
-
-
+\texttt{McFACTS} is designed to be public, modular and evolve.
+The content presented in this dissertation was performed using \code{v0.3.0}, but we have already implemented stars into the disk (see Nathaniel et al. 2026 in prep.)
+Other Future near-term goals include:
+(i) add objects other than BH and main-sequence stars to the disk (neutron stars, white dwarfs)
+(ii) consider the EM significance of encounters between objects (including TDEs, partial TDEs, GRBs as well as disk-crossing events),
+(iii) treat the final timestep of mergers with increasing sophistication, including calculating details of eccentricity evolution, recoil kicks from numerical relativity calculations (Ray et al. 2026 in prep.) and disk re-capture correctly,
+(iv) allow multiple AGN episodes to occur in a given nucleus, with appropriate dynamical relaxation, (v) predict the rate and magnitude of optical/UV/X-ray flaring due to explosive events (mergers,disk-crossing, SNe,TDEs) (McPike et al. 2026 in prep.),
+(vi) develop and add new models of AGN disks to reflect recent simulations \citep{FIRE24}, and
+(vii) add more sophisticated treatments for binary capture \citep{Whitehead25} and stalling of gas hardening (Postiglione et al. 2026 in prep.).
 
 \subsection{New Observables with Hydrodynamics and Radiative Transfer}
 %TODO - add recoiling remnant model here from the funding proposals
