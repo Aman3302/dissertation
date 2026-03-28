@@ -1,5 +1,5 @@
 \addtocontents{toc}{\protect}
-\section{\texorpdfstring{\MakeUppercase{sn shock breakout from agn accretion disks}}{sn shock breakout from agn accretion disks}}
+\section{\texorpdfstring{\MakeUppercase{supernova shock breakout from active galactic nuclear accretion disks}}{supernova shock breakout from active galactic nuclear accretion disks}}
 \label{sec:sn-hydrodynamics}
 
 \counterwithin{figure}{section}
@@ -14,7 +14,7 @@ To cite this chapter, please use Cook et al. (2026a) when possible.
 We aim to assess how shocks evolve in the dense stratified medium of AGN disks and understand where the kinetic energy injected by SN explosions from embedded stars is absorbed, or \emph{muffled}, as opposed to where they are able to break free from the disk.
 We generate midplane radial profiles using the SG and TQM one-dimensional AGN disk models with the help of the \code{pAGN} code.
 We compare the disk pressure as a function of radius to the energy of a standard core-collapse SN ($10^{51}\,{\rm erg}$) to find locations where shock-breakout can occur.
-For verification, we evolve three-dimensional hydrodynamic shearing box simulations of disks with Gaussian stratification constructed from select midplane values and inject energy and mass from SNe using the Athena code to explore several radial and vertical placements.
+For verification, we evolve three-dimensional hydrodynamic shearing box simulations of disks with Gaussian stratification constructed from select midplane values and inject energy and mass from SNe using the \code{Athena} code to explore several radial and vertical placements.
 We find SNe shocks in SG disks around black holes with mass $\Mbh=10^6\,\Msun$ become muffled beyond $R\sim10^6\,\Rs$, and that this muffling radius is inversely proportional to SMBH mass such that the muffling radius moves inward to $R\sim10^2\,\Rs$ for $\Mbh=10^9\,\Msun$.
 Around TQM disks, the muffling radius occurs at $R\sim10^6\,\Rs$, independent of $\Mbh$.
 We find the largest determining factor for muffling a SN shock is the local scale height of the AGN disk.
@@ -98,12 +98,12 @@ The vertical lines mark where $\mathcal{C}=1$ for disk models corresponding to t
 \subsubsection{Hydrodynamic Models}
 \label{sec:hydro}
 
-We test the validity of Eq.\,(\ref{eqn:C-parameterized}) using three-dimensional shearing box hydrodynamic simulations with the publicly available Athena code, a finite-volume code for compressible hydrodynamics problems \citep{Stone+08, StoneGardiner10}.
+We test the validity of Eq.\,(\ref{eqn:C-parameterized}) using three-dimensional shearing box hydrodynamic simulations with the publicly available \code{Athena} code, a finite-volume code for compressible hydrodynamics problems \citep{Stone+08, StoneGardiner10}.
 The code solves the Riemann problem at each cell interface to determine the flux of quantities over time.
-We find the HLLE solver \citep{Einfeldt+91} achieved the most robust numerical stability across the strong shocks we produce and is employed for all our models.
+We find the Harten-Lax-van Leer-Einfeldt (HLLE) solver \citep{Einfeldt+91} achieved the most robust numerical stability across the strong shocks we produce and is employed for all our models.
 
 \subsection{Dynamical Equations} \label{sec:dyn-eq}
-Athena solves the equations of motion in the standard Cartesian shearing box approximation in the following form
+\code{Athena} solves the equations of motion in the standard Cartesian shearing box approximation in the following form
 \begin{align}
     &\ptderiv{\rho} + \Div{\left(\rho\vec{}{v}\right)} = 0
     \label{eqn:cons_mass} \\
@@ -115,9 +115,9 @@ Athena solves the equations of motion in the standard Cartesian shearing box app
     \label{eqn:cons_energy}
 \end{align}
 where $\rho$ is the gas density, $t$ is time, $\vec{v}$ the gas velocity, $P$ is the gas pressure, and $\Omega(r) = (GM_{\rm BH}/r^3)^{1/2}$ is the Keplerian orbital frequency evaluated at the radial location corresponding to the center of the shearing box.
-The logarithmic shearing parameter $q$ is related to the orbital frequency by
+The logarithmic shearing parameter $q_\text{shear}$ is related to the orbital frequency by
 \begin{equation}
-    q \equiv -\frac{d\ln\Omega(r)}{d\ln r}.
+    q_\text{shear} \equiv -\frac{d\ln\Omega(r)}{d\ln r}.
 \end{equation}
 We set $q=3/2$ for a Keplerian flow.
 The variables $x$, $y$, and $z$ represent the local radial, azimuthal, and vertical coordinates within the domain, respectively.
@@ -393,7 +393,7 @@ Whether radiation emitted by a SNe can be observed against the bright AGN disk i
 For example, even though the shock in the model placed at $R=10^5\,\Rs$ was muffled, the SG disk model is optically thin at that radius when $\Mbh=10^8\,\Msun$, and photons directly emitted a SN may still escape.
 We will present detailed post-processing radiative transfer calculations to derive light curves for our shearing box simulations in the following chapter.
 
-As large surveys like the Legacy Survey of Space and Time (LSST) generate baselines for substantially more AGN \citep{Kovacevic+22}, if we are able to constrain the rates of observable and non-observable AGN-SN, we will also have constraints on AGN disk properties such as their sizes and densities.
+As large surveys like the LSST generate baselines for substantially more AGN \citep{Kovacevic+22}, if we are able to constrain the rates of observable and non-observable AGN-SN, we will also have constraints on AGN disk properties such as their sizes and densities.
 If the rate is small, then either most SNe are muffled in a geometrically thick, low-density AGN disk or the disk is typically small.
 In contrast, a large rate suggests AGN disks are likely large, geometrically thin, dense, and thus able to capture or produce stars at a high rate.
 

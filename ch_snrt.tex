@@ -1,5 +1,5 @@
 \addtocontents{toc}{\protect}
-\section{\texorpdfstring{\MakeUppercase{agn-sn radiative transfer models and observables}}{agn-sn radiative transfer models and observables}}
+\section{\texorpdfstring{\MakeUppercase{radiative transfer models and observables of supernovae in active galactic nuclear accretion disks}}{radiative transfer models and observables of supernovae in active galactic nuclear accretion disks}}
 \label{sec:sn-rt}
 
 \counterwithin{figure}{section}
@@ -33,7 +33,7 @@ For this study, we apply a temperature mask over the entire domain for each snap
 \end{equation}
 where $\Tfloor=2000$ K.
 We could use simply $\Tiso = \Tmid$, but in practice we find that we need to allow for some flexibility in regions modified by the SN Gaussian in the initial conditions.
-As such, we set $\Tiso = (1+\epsilon) T_mid$, and find empirically that $\epsilon=10^{-2}$ gives acceptable results.
+As such, we set $\Tiso = (1+\epsilon) \Tmid$, and find empirically that $\epsilon=10^{-2}$ gives acceptable results.
 We find the temperature scale height $H_T=1.7\,H$ by root-solving for the profile from the midplane temperature to the effective temperature $\Teff$ using the Eddington approximation
 \begin{equation}
 	T = \left( \frac{3}{8} \tau + \frac{1}{2} + \frac{1}{4\tau} \right)^{1/4}\ \Teff.
@@ -316,25 +316,25 @@ Some of the expressions stated above were normalized per neutral hydrogen atom. 
 where $\chi_\lambda = 1.2398 \times 10^4/\lambda\text{eV}$ when $\lambda$ is in \AA.
 
 \begin{figure}
-\begin{subfigure}{0.3\textwidth}
     \centering
     \includegraphics[width=1.0\textwidth]{ch_snrt_figs/opacity_w4473_0000.pdf}
-\end{subfigure}
-\begin{subfigure}{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.0\textwidth]{ch_snrt_figs/opacity_w4473_0013.pdf}
-\end{subfigure}
-\begin{subfigure}{0.3\textwidth}
-    \centering
-    \includegraphics[width=1.0\textwidth]{ch_snrt_figs/opacity_w4473_0031.pdf}
-\end{subfigure}
-	\caption[Opacity profiles]{Opacity profiles from model \code{r1e3-z0h} showing contributions from each component in \eq{eqn:total-kappa} for the column passing through the center of the SN.
-	\textit{Left:} Initial conditions.
-	\textit{Center:} Snapshot when the lightcurve rapidly increases.
-	\textit{Right:} Last snapshot before the shock leaves the domain.}
-\label{fig:opacity-profiles}
+	\caption[Vertical opacity profiles for initial conditions]{Opacity profiles from model \code{r1e3-z0h} showing contributions from each component in \eq{eqn:total-kappa} for the column passing through the center of the SN for the initial conditions.}
+\label{fig:opacity-profile0}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth]{ch_snrt_figs/opacity_w4473_0013.pdf}
+	\caption[Vertical opacity profiles at shock breakout]{Vertical opacity profiles at shock breakout.}
+	\label{fig:opacity-profile13}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth]{ch_snrt_figs/opacity_w4473_0031.pdf}
+	\caption[Vertical opacity profiles in final snapshot]{Vertical opacity profiles in the snapshot before the shock leaves the domain.}
+	\label{fig:opacity-profile31}
+\end{figure}
 
 When the ionization fraction becomes large (i.e., $1 - n_\text{HII}/n_\text{HI}>10^{-2}$), we switch to using the following expression for the free-free absorption component as a function of frequency $\nu$
 \begin{equation}
@@ -347,7 +347,7 @@ where
 is the Gaunt quantum mechanical correction factor, and the final term $e$ is Napier's constant.
 Since this expression is for absorption with units cm$^{-1}$, we take it out of \eq{eqn:total-kappa} and add it directly to our calculation of $\alpha_\lambda$. 
 
-\Fig{fig:opacity-profiles} shows the opacity profiles for our fiducial model \code{r1e3-z0h} for each term in \eq{eqn:total-kappa} at multiple points in time for the central wavelength in our range $\lambda=4473\,\text{\AA}$.
+\Fig{fig:opacity-profile0}, \Fig{fig:opacity-profile13}, and \Fig{fig:opacity-profile31} show the opacity profiles for our fiducial model \code{r1e3-z0h} for each term in \eq{eqn:total-kappa} for the central wavelength in our range $\lambda=4473\,\text{\AA}$ at the initial conditions, shock breakout, and the snapshot before the shock leaves the $z$ boundary.
 The vertical dotted line shows the photosphere ($\tau=1$) when observed from the positive $z$-direction.
 At $t=0$ days, the disk midplane is dominated by $\kappa(\text{H}_\text{bf})$ and $\sigma_\text{e}$, but the disk photosphere at $z=5H$ is dominated by free-free absorption from $\kappa(\text{H}_\text{ff})$ and $\kappa(\text{H}_\text{ff}^-)$.
 At $t=31$ days when the SN shock passes $z=5H$ and the light curve in \Fig{fig:all_lcs} rises, $\kappa(\text{H}_\text{bf})$ becomes the dominant opacity source.
@@ -391,7 +391,7 @@ However, continuing their curves, we can estimate their peaks will occur at 115 
 
 Our model where the SN is placed at $z=1\,H$ produces two different light curves when viewed from opposite sides of the disk.
 When viewed from the same side of the midplane as the SN (model \code{r1e3-z1h-up}) the green points show changes in the light curve occur earlier, corresponding to the shorter time it takes the shock to reach the disk photosphere.
-Now, the radiation excapes at $\sim15$ days and rises faster than the midplane case in \code{r1e3-z0h} to a peak twice as bright.
+Now, the radiation escapes at $\sim15$ days and rises faster than the midplane case in \code{r1e3-z0h} to a peak twice as bright.
 Viewing from the far side of the disk (model \code{r1e3-z1h-down}), the orange points show no change at all with only a slight brightening when the flow reaches the disk photosphere near $\sim60$ days.
 
 \subsubsection{SNe in the Outer Disk}
@@ -443,9 +443,8 @@ Even though two models showed color changes, the difference is small $\Delta (g-
 \subsection{Discussion} \label{sec:discussion}
 
 The baseline disk luminosities in Fig.~\ref{fig:all_lcs} are only produced by the radiation emitted by the small patch of the disk contained in the shearing box models, whereas the full integrated disk luminosity is much larger.
-While studying spectra for AGN accretion disks, \citet{Hubeny+01} found that for a disk around a black hole of mass $\Mbh=10^8\,\Msun$ with a viscocity parameter of $\alpha=0.01$ has a luminosity $L=0.3L_\text{Edd}=4.4\cdot10^45(M/\Msun)$ erg s$^{-1}$ when considering electron scatting.
+While studying spectra for AGN accretion disks, \citet{Hubeny+01} found that for a disk around a black hole of mass $\Mbh=10^8\,\Msun$ with a viscocity parameter of $\alpha=0.01$ has a luminosity $L=0.3L_\text{Edd}=4.4\cdot10^{45}(M/\Msun)$ erg s$^{-1}$ when considering electron scattering.
 Therefore, only the SNe in models \texttt{r1e3-z0h} and \texttt{r1e3-z1h-up} may be detectable against the bright disk, and any observations would need to be able to distinguish changes from the disk emission by a factor of a few.
-
 Additionally, as shown in \Fig{fig:color-lightcurve}, the color changes for these two SNe are very small ($\Delta g-r \sim 0.04$).
 
 
@@ -481,11 +480,11 @@ By implementing the Feautrier method we calculated the absorption and scattering
 For SNe at the midplane in the inner disk ($r=10^3\,Rs$), the radiation emerges $\sim30$ days later and rises quickly to a peak at $L=10^{46}\ \text{erg s}^{-1}$.
 Typical AGN luminosities can be $\mathcal{O}(10^{43}-10^{48}\ \text{erg s}^{-1})$, so these SNe will only be brighter than AGN of $L\ll10^{46}$, which is the range for Seyfert galaxies and other low-luminosity AGN, and will not be visible in quasars.
 Radiation from a SN at the same location but offset from the midplane at $z=1\,H$ emerges 15 days earlier, rises much faster, and peaks at $2 \times 10^{46}\ \text{erg s}^{-1}$ when viewed from the same side of the midplane.
-The radiation does not reach the other side of the disk in a detecable manner under this scenario.
+The radiation does not reach the other side of the disk in a detectable manner under this scenario.
 While bright, these SNe may not be detectable against a bright AGN disk, but would be easily seen if occuring in a starved disk or during an episode of lower mass accretion rates.
 For SNe detonating in the outer disk at $r=10^5\,\Rs$, the large scale height of the disk prevents the hot shock from emerging from the photosphere.
 
 Embedded SNe do not exhibit a significant color evolution.
 Without this key indicator that is common to naked SNe, they may be indistinguishable from flares produced by recoiling BBH merger remnants.
-As such we will need to consider a different part of the spectrum or aspects of these transients to reliably distinguish between flares emitted by embedded merger remnants versus embedded SNe in transient searches and archives such as ZTF or LSST.
+As such we will need to consider a different part of the spectrum or aspects of these transients to reliably distinguish between flares emitted by embedded merger remnants versus embedded SNe in transient searches such as ZTF or LSST and their archives.
 
