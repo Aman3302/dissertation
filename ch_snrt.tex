@@ -71,7 +71,7 @@ Therefore, each column is treated as an isolated stream and is solved using the 
 %See Appendix \ref{sec:Apdx-Feautrier} for our modification of the method to include scattering and our boundary conditions.
 It is apropriate for the general case where extinction occurs via absorption and scattering processes.
 
-This method outlined below forms the core the \code{Ocotillo} code, a multi-wavelength post-processing radiative transfer calculations, we developed for this purpose.
+This method outlined below forms the core the \ocotillo code, a multi-wavelength post-processing radiative transfer calculations, we developed for this purpose.
 
 \subsubsubsection{Feautrier method}
 \label{sec:Feautrier-method}
@@ -219,7 +219,7 @@ We call attention here to an important subtelty, that the Taylor expansion near 
 \begin{figure}
     \centering
     \includegraphics[width=1.0\columnwidth]{ch_snrt_figs/Feautrier_UVIpIm.png}
-	\caption[Feautrier Solutions]{Feautrier solutions from Ocotillo for the fiducial model \code{r1e3-z0h}.} 
+	\caption[Feautrier Solutions]{Feautrier solutions from \ocotillo for the fiducial model \code{r1e3-z0h}.} 
     \label{fig:feautrier_solution}
 \end{figure}
 
@@ -361,7 +361,7 @@ At $t=76$ days, when the shock reaches the domain boundary, the opacity at the p
 The \citet{SirkoGoodman03} disk has the highest volume density at $10^3\,\Rs$ where we place our fiducial miplane model \code{r1e3-z0h}.
 This location was also chosen because it is the most optically thick and thus most likely to prevent or delay electromagnetic radiation from reaching the disk photosphere.
 Using \eq{eqn:temp-profile} to apply the temperature profile, we set $\Tmid=6\times10^4$ K.
-The blue curve in Fig.~\ref{fig:all_lcs} is the light curve calculated using our post-processing radiative transfer code \code{Ocotillo}
+The blue curve in Fig.~\ref{fig:all_lcs} is the light curve calculated using our post-processing radiative transfer code \ocotillo
 %\ref{sec:Appendix-RTModel})
 after integrating the flux over 50 wavelengths over the range $800\leq\lambda\leq8000\ \text{\AA}$.
 The light curve remains constant for the first $\sim$20 days when the shock begins to pass through the disk's photosphere and breaks free at $\sim$30 days.

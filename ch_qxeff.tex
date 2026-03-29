@@ -5,17 +5,17 @@
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
 
-\par The model and results described in this chapter were produced using the \code{McFACTS} code that was initially published in a series of papers \code{McFACTS I}
-\citep{McKernan+25-mcfactsI}, \code{McFACTS II} \citep{Cook+25}, and \code{McFACTS III} \citep{Delfavero+25-mcfactsIII} in the \textit{Astrophysical Journal}.
+\par The model and results described in this chapter were produced using the \mcfacts code that was initially published in a series of papers \mcfacts \code{I}
+\citep{McKernan+25-mcfactsI}, \mcfacts \code{II} \citep{Cook+25}, and \mcfacts \code{III} \citep{Delfavero+25-mcfactsIII} in the \textit{Astrophysical Journal}.
 The bulk of this chapter is directly informed by the content of \citet{Cook+25}, my primary scientific contribution, with my contributions to the other papers mixed in.
 I will also briefly summarize the first paper in the series, \citet{McKernan+25-mcfactsI}, for algorithmic reasons and in the capacity that pertains to my work.
 Please cite \citet{McKernan+25-mcfactsI} for specifics model details and \citet{Delfavero+25-mcfactsIII} for results related to a cosmologically informed galaxy population.
 
 \subsection{Motivation}
 
-Here we present a study using the \code{McFACTS} code \citep{McKernan+25-mcfactsI, Cook+25, Delfavero+25-mcfactsIII} to test the predictions of the AGN channel for the $q$--$\Xeff$ distribution across a wide range of parameter space in both AGN disk and NSC models, with a view to tightly constraining requirements on the AGN channel.
+Here we present a study using the \mcfacts code \citep{McKernan+25-mcfactsI, Cook+25, Delfavero+25-mcfactsIII} to test the predictions of the AGN channel for the $q$--$\Xeff$ distribution across a wide range of parameter space in both AGN disk and NSC models, with a view to tightly constraining requirements on the AGN channel.
 The assumptions we vary include the BH initial mass function, disk model, disk size, disk lifetime, NSC model, and the prograde-to-retrograde fraction of newly formed black hole binaries.
-\code{McFACTS} features substantial improvements to the Monte Carlo code used in \citet{McKernan+20a} to explore $\Xeff$ of mergers in AGN and \citet{McKernan+22:q-Xeff} who explored the $q$--$\Xeff$ anti-correlation.
+\mcfacts features substantial improvements to the Monte Carlo code used in \citet{McKernan+20a} to explore $\Xeff$ of mergers in AGN and \citet{McKernan+22:q-Xeff} who explored the $q$--$\Xeff$ anti-correlation.
 The greater flexibility for exploring parameter space includes many improved models for disk-NSC interactions such as dynamical encounters, orbital migration, and binary evolution.
 Broadly we find that dense, moderately short-lived AGN disks are preferred for producing an anti-correlation between the mass ratio $q$ and effective spin $\Xeff$ like has been identified from existing GW observations.
 Additionally, a BH initial mass function (IMF) $\propto M^{-2}$ is preferred over a more top-heavy IMF ($M^{-1}$), where $M$ is the BH mass.
@@ -81,28 +81,20 @@ Such a bias might be due to orbital inclination flipping \citep{DittmannDempseyL
 Additionally, once BBH merge, most of their orbital angular momentum as they coalesce will go into natal spin of the newly merged BH, typically $\chi \sim 0.7$ \citep{TichyMarronetti08}.
 Hierarchical mergers containing higher generation (2g or higher) BH that have inherited these large positive spins will therefore strongly favor positive $\Xeff$.
 
-\subsection{The life of a black hole in \code{McFACTS}}
+\subsection{Major contributions to \mcfacts}
 
+\mcfacts is developed by a large team, and I was present from the beginning and involved with many design decisions and devlopment.
+While I had many contributions, I will hightlight two of them here: the monte carlo method and a broken power law distribution for assigning BH locations in the NSC.
 
+The core purpose of \mcfacts is to generate statistical populations of BH mergers produced through an algorithm replicating the physical processes present in the AGN formation channel.
+This requires the ability to repeatedly simulate those processes under slightly varying conditions to understand individual and cumulative effects of those variations.
+Monte Carlo methods are used for this purpose because they allow repeated random sampling of quantities from a range of possible values that are assigned a probabiliy of being drawn from the population, i.e. a probability distribution.
+After we established the alrogithm for evolving BHs in an AGN disk for a single galaxy, I implemented a pseudorandom number generator that allows us to set a random state with a unique seed.
+Each time we need to draw a number to assign a BH its mass or to select the orbital parameters after a dynamical encounter we invoke the same random number generator which advances its state with each draw.
+The seed gives us the ability to start the generator at the same state for each run which is critical for testing and scientific reproducibility.
 
-
-
-
-
-
-\subsection{Methods}
-\label{sec:methods-qxeff}
-
-Here we introduce the assumptions, models, and parameters that we vary in the \code{McFACTS} code relevant for testing the $q$--$\Xeff$ distribution.
-We run each of the following setups 100 times to build a statistically significant sample.
-In each run, our code evaluates the following physical processes:
-
-We begin by generating a disk model using the \code{pAGN} code \citep{Gangardt+24-pAGN} using the default parameters for a SMBH with mass $\Mbh=10^8\,\Msun$.
-The default extent is $5 \leq R/\Rg \leq 5\times10^5$ with the alpha viscosity parameter $\alpha=0.01$, and a 
-lifetime depending on the disk model (see below).
-
-
-One of my contributions to \code{McFACTS} was to implement a mechanism to draw initial BH locations in the disk by selecting one of the following probability distributions: 1) uniform distribution 2) broken power-law distribution.
+One of the probability distributions we use assigns the initial location of a BH in the AGN disk.
+I implemented a mechanism to draw these values by selecting one of the following probability distributions: 1) uniform distribution 2) broken power-law distribution.
 A uniform distribution assumes BHs have equal probability of existing at every radius in the disk, but it is only included as an optional setting for cases a user may find it useful and is not appropriate for determining BH distributions across large regions of the NSC.
 Our NSC model is defined with a broken powerlaw number density profile that goes as $n\propto R^{-7/4}$ out to the critical radius at $R\sim 0.25$ pc and $n\propto R^{-2.5}$ beyond that to $5$ pc and contains $10^4$ BHs within the central $\text{pc}^3$ \citep{Generozov+18}.
 If implemented directly, this distribution inaccurately allocates a greater probability density to the inner disk that, if used, would artificially over-crowd it with BHs.
@@ -117,11 +109,26 @@ Then, we scale the probability in each bin of the radial grid by its correspondi
 \end{equation}
 where $\Delta R$ is the width of the radial bin.
 The final probabilty density distribution is shown in \Fig{fig:nsc-loc-sampling} by the purple shaded region alongside those for the uniform distribution (red) and unscaled broken power-law distribution (teal).
-Also plotted are histograms of the resulting draws for 100 galaxies where the disk radius is $\Rout=10^6\,\Rs$, replicating the initial samples for a typical run in \code{McFacts}.
+Also plotted are histograms of the resulting draws for 100 galaxies where the disk radius is $\Rout=10^6\,\Rs$, replicating the initial samples for a typical run in \mcfacts.
 The radius is extended here beyond what of our studies to demonstrate the shape of the broken power law distribution and the BH populations in comparison with the uniform distribution.
 Importantly, a uniform distribution under-populates the region near $\Rcrit$ and over-populates in the outer disk.
 The population generated with the unscaled power law probability distribution is so concentrated in the first bin that only $\sim1200$ BHs get initialized beyond it.
 The $y$-axis trimmed to ignore most of these to highlight the complexity in the outer disk.
+
+
+
+
+\subsection{Methods}
+\label{sec:methods-qxeff}
+
+Here we introduce the assumptions, models, and parameters that we vary in the \mcfacts code relevant for testing the $q$--$\Xeff$ distribution.
+We run each of the following setups 100 times to build a statistically significant sample.
+In each run, our code evaluates the following physical processes:
+
+We begin by generating a disk model using the \code{pAGN} code \citep{Gangardt+24-pAGN} using the default parameters for a SMBH with mass $\Mbh=10^8\,\Msun$.
+The default extent is $5 \leq R/\Rg \leq 5\times10^5$ with the alpha viscosity parameter $\alpha=0.01$, and a lifetime depending on the disk model (see below).
+
+The next step is to populate the disk with BHs using a broken power law distribution dependent on the power-law indicies of the number density profiles as defined by \citet{Generozov+18}.
 
 We draw masses for each BH from a Pareto distribution IMF with index $M^{-2}$ over the range $10<M/\Msun<40$.
 To replicate the slight over density observed at $35\,\Msun$ \citep{Abbott+23-massbump}, we redraw for any BHs that would be assigned a mass above this range from a Gaussian with width $2.3\,\Msun$ centered at $35\,\Msun$.
@@ -156,7 +163,7 @@ We calculate migration torques for circular BH orbiters (singles and binaries) a
 Following \citet{Bellovary+16}, we set migration traps at 700 $\Rg$ in SG disks and 500 $\Rg$ in TQM disks.
 In practice, mergers also aggregate near $R\sim10^3\,\Rg$ (for $\Mbh = 10^8\,\Msun$) when using migration prescriptions described by \citet{GrishinGilbaumStone24} as BH enter the region of lower migration speeds as they aproach the trap.
 
-The choice of migration torque model may be important for disk structures around SMBH of different mass, and \code{McFACTS} provides the user with two options: a two-dimensional model from \citet{Paardekooper+10} and a three-dimensional (3D) model from \citet{JimenezMassset17}.
+The choice of migration torque model may be important for disk structures around SMBH of different mass, and \mcfacts provides the user with two options: a two-dimensional model from \citet{Paardekooper+10} and a three-dimensional (3D) model from \citet{JimenezMassset17}.
 In general, the Jim\'enez-Masset 3D torques are weaker across the bulk disk by up to $\sim$30\%.
 This tends to drop the overall merger rate in disks (including at the trap/swamp if present).
 Likewise migration traps move radially outward in units of $\Rg$ as the SMBH mass drops well below $\Mbh=10^8\,\Msun$, but in \citet{McKernan+25-mcfactsI} we compared these models and found little change for $\Mbh = 10^8\,\Msun$ \citep[see Fig. 6 \& 7 of][]{McKernan+25-mcfactsI}, which is also the SMBH mass we find that produces the most mergers \citep{Delfavero+25-mcfactsIII}.
@@ -324,7 +331,7 @@ The parameter \code{fraction_bin_retro} controls the fraction of retrograde bina
     \code{flag_add_stars} & 0 & \\
 \end{tabular}
 }
-\caption[Default \code{McFACTS} input parameters]{Default input parameters for the SMBH, AGN disk and NSC as well as physics choices in \texttt{p1\_model\_default.ini}.
+\caption[Default \mcfacts input parameters]{Default input parameters for the SMBH, AGN disk and NSC as well as physics choices in \texttt{p1\_model\_default.ini}.
 	Published in \citet{McKernan+25-mcfactsI}.}
 \label{tab:default_model}
 \end{table}
@@ -380,7 +387,7 @@ The parameter \code{fraction_bin_retro} controls the fraction of retrograde bina
     \code{tqm_e0} & 92269440 & \code{disk_bh_orb_ecc_max_init} & 0.0
 \end{tabular}
 }
-\caption[Parameter choices for McFACTS runs]{Unique parameters choices and random number generator seeds for each run.
+\caption[Parameter choices for \mcfacts runs]{Unique parameters choices and random number generator seeds for each run.
 	All other parameters are unchanged from those in the default models, which are otherwise identical to those in Table~\ref{tab:default_model}.}
 \label{tab:run-parameters}
 \end{table}
@@ -388,7 +395,7 @@ The parameter \code{fraction_bin_retro} controls the fraction of retrograde bina
 
 \subsubsection{Default Models}
 The top left panel of \Fig{fig:default-imf} shows the mass ratio ($q$) versus effective spin ($\Xeff$) phase space for our default model consisting of 100 galaxies using an SG disk with lifetime $\tauAGN = 0.5$ Myr, radius $R_{\rm out} = 5\times 10^4\,\Rg$, and migration trap at 700$\,\Rg$.
-We refer to this model as \code{sg_default} and set the quantities using these \code{McFACTS} parameters: \code{timestep_num}, \code{disk_radius_outer}, and \code{disk_radius_trap}.
+We refer to this model as \code{sg_default} and set the quantities using these \mcfacts parameters: \code{timestep_num}, \code{disk_radius_outer}, and \code{disk_radius_trap}.
 The initial BH population is drawn from a mass distribution of index $\gamma=2$ (\code{nsc_imf_powerlaw_index}) with a maximum initial orbital eccentricity $e_{\rm 0,max}=0.5$ (\code{disk_bh_orb_ecc_max_init}).
 We only allow prograde BH orbiters to form BBH and do not allow the retrograde orbiters to interact in any way.
 We restrict BBH to form from BH orbiting in a prograde orientation with the same sense of direction as the disk ($\vec{L}_{\rm BH}\,||\,\vec{L}_{\rm disk}$) and bias the resulting binaries towards a prograde direction (i.e., $\vec{L}_{\rm bin}\,||\,\vec{L}_{\rm disk}$, and see an exploration of $\fret$ below).
@@ -509,7 +516,7 @@ Below we explore the effects of a series of parameters on the intrinsic $q$--$\X
 
 
 \subsubsection{Changing the Mass Function}
-First, we test the effect of flattening the BH initial mass function (IMF) by changing the power-law index from a steeper $\gamma=2$ (our default) to $\gamma=1$ (\code{nsc_imf_powerlaw_index} in \code{McFACTS}).
+First, we test the effect of flattening the BH initial mass function (IMF) by changing the power-law index from a steeper $\gamma=2$ (our default) to $\gamma=1$ (\code{nsc_imf_powerlaw_index} in \mcfacts).
 NSCs may have a shallower-than-Salpeter IMF, and indeed a shallow IMF is observed in our own Galactic nucleus \citep[][]{Lu+2013}.
 
 The top right panel of \Fig{fig:default-imf} shows the results from run \code{sg_g1} and is qualitatively similar to $\sgdefault$.
@@ -681,7 +688,7 @@ TQM models produce similar results for 1g mergers, but the number of hierarchica
 \subsubsection{Impact of Retrograde Binaries}
 \label{sec:retro-results}
 We now relax the default requirement for prograde BBH only and test a retrograde fraction $\fret=0.1,0.5.$ Retrograde BBH orbit retrograde around their center of mass, but prograde around the SMBH.
-Control this parameter in \code{McFACTS} with \code{fraction_bin_retro}.
+Control this parameter in \mcfacts with \code{fraction_bin_retro}.
 A perfectly symmetric  distribution in $\Xeff$ around $\Xeff \sim 0$ consistent with is a $d\chi/dq$ slope of zero.
 This should by definition be the case for the $\fret=0.5$ (see \Fig{fig:retro}, where $d\chi/dq=0.0\pm0.01$).
 
@@ -736,7 +743,7 @@ In this section we explore the effects of changing the maximum initial orbital e
 Migration does not occur unless a BH has been circularized, defined when $e_{\rm crit}\leq0.01$.
 For eccentric prograde BH, mass accretion is retrograde, spinning down embedded BH.
 Thus, more eccentric BH that spend a longer time circularizing experience more spin-down before they can migrate and form BBH.
-Control this parameter in \code{McFACTS} with \code{disk_bh_orb_ecc_max_init}
+Control this parameter in \mcfacts with \code{disk_bh_orb_ecc_max_init}
 
 \subsubsubsection{SG disk: $\emax= 0.1, 0.3, 0.5$}
 
@@ -885,6 +892,7 @@ A small average disk size generates a plausible $q$--$\Xeff$ distribution but a 
 
 Seventh, more massive primaries tend to produce mergers with higher $\Xeff$ (see Fig.~\ref{fig:default-primarymass-xeff}) since they are more likely to be 2g or $\geq$3g and thus had their spins aligned with the disk.
 
+\subsection{Conclusion}
 The observed LVK BBH rate of $\mathcal{R} \sim 25\,{\rm Gpc}^{-3} {\rm yr}^{-1}$ \citep{Abbott+23-O3b} originates from a variety of formation channels, potentially including some fraction from AGN.
 From \citet{McKernan+25-mcfactsI} the merger rates for our default SG disk is $\mathcal{R} \sim 20\,{\rm Gpc}^{-3} \rm{yr}^{-1}$, whereas the default TQM rate is only $\mathcal{R} \sim 0.1\,{\rm Gpc}^{-3} \rm{yr}^{-1}$.
 SG-like AGN are efficient at making IMBH, driving low $q$ and high $\Xeff$ mergers, whereas low density/opacity, TQM-like disks are far less efficient producers of hierarchical merger events.
