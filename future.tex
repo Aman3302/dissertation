@@ -12,22 +12,22 @@ The content presented in this dissertation was performed using \code{v0.3.0}, bu
 Other future near-term goals include:
 (i) add objects other than BH and main-sequence stars to the disk (neutron stars, white dwarfs)
 (ii) consider the EM significance of encounters between objects (including TDEs, partial TDEs, GRBs as well as disk-crossing events),
-(iii) treat the final timestep of mergers with increasing sophistication, including calculating details of eccentricity evolution, recoil kicks from numerical relativity calculations (Ray et al. 2026 in prep.) and disk re-capture correctly,
-(iv) allow multiple AGN episodes to occur in a given nucleus, with appropriate dynamical relaxation, (v) predict the rate and magnitude of optical/UV/X-ray flaring due to explosive events \citep[mergers, disk-crossings, SNe, TDEs,][]{McPike+26-mcfactsIV},
+(iii) treat the final time step of mergers with increasing sophistication, including calculating details of eccentricity evolution, recoil kicks from numerical relativity calculations (Ray et al. 2026 in prep.) and disk re-capture correctly,
+(iv) allow multiple AGN episodes to occur in a given nucleus, with appropriate dynamical relaxation, (v) predict the rate and magnitude of optical/ultraviolet/X-ray flaring due to explosive events \citep[mergers, disk-crossings, SNe, TDEs,][]{McPike+26-mcfactsIV},
 (vi) develop and add new models of AGN disks to reflect recent simulations \citep{Hopkins+24}, and
 (vii) add more sophisticated treatments for binary capture \citep{Whitehead+25b} and stalling of gas hardening (Postiglione et al. 2026 in prep.).
 
 \subsection{Updates to Ocotillo and New Models}
 
 
-The embedded SNe light curve we produced was marginably visible against a bright AGN disk and the color evolution would likely be lost in the noise of typical AGN variability. 
+The embedded SNe light curve we produced was marginally visible against a bright AGN disk and the color evolution would likely be lost in the noise of typical AGN variability. 
 However, we did not capture the peak of the light curve due to domain size limitations with our uniform grid.
 Future studies should move to a code that supports adaptive mesh refinement or static mesh refinement at a minimum since we are approaching the limits of resolution for three-dimensional uniform grids in terms of computational expense and data storage requirements.
 Additionally, we will likely need to move to a global disk model that will enable us to model the full disk emission.
 Codes like \citep[\code{Athena++}][]{Stone+20} may be appropriate for this purpose.
 
 Ocotillo will need an upgrade to calculate in three dimensions for a global disk in spherical coordinates that spans the full meridional domain rather than one with boundaries just above and below the disk.
-We will also expand its treatment for the gas composition to achieve ionization states for a broader range of atomic species that more accurately reflect the solar and super-solar metallicites found in AGN \citep{HuangLinShields23}, requiring additional opacities.
+We will also expand its treatment for the gas composition to achieve ionization states for a broader range of atomic species that more accurately reflect the solar and super-solar metallicities found in AGN \citep{HuangLinShields23}, requiring additional opacities starting with helium.
 
 
 We also plan to model the hydrodynamics and radiative transfer of a recoiling BBH merger remnant.

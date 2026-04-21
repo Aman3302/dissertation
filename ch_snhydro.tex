@@ -9,7 +9,7 @@
 As such, the main text of this chapter is directly informed by the content of that publication.
 To cite this chapter, please use Cook et al. (2026a) when possible.
 
-\subsection{Motivation}
+\subsection{Abstract}
 \label{sec:motivation-snhydro}
 We aim to assess how shocks evolve in the dense stratified medium of AGN disks and understand where the kinetic energy injected by SN explosions from embedded stars is absorbed, or \emph{muffled}, as opposed to where they are able to break free from the disk.
 We generate midplane radial profiles using the SG and TQM one-dimensional AGN disk models with the help of the \code{pAGN} code.
@@ -206,18 +206,18 @@ Around an SMBH with $M_{\rm BH}=10^6\,\msun$, the shock will break free from the
 Shocks from SNe beyond this radius out to the disk edge at $10^7\,\Rs$ will be muffled and will not break free.
 The radius of this muffling boundary is inversely proportional to SMBH mass, decreasing to $\sim 6\times10^2\,\rs$ for $\Mbh=10^9\,\msun$.
 For SG disks around SMBHs with mass $10^9\,\Msun$, $H$ is consistently $10^3$ to $10^4$ times larger at all radii than for disks around those with masses of $10^6\,\Msun$ (c.f., Fig.~\ref{fig:disk-models}).
-Eq.\,(\ref{eqn:C}) most strongly depends on the scale height ($\propto H^{-3}$).
-Thus, thicker disks are more likely to obscure embedded SNe than thin disks.
+That's important, because the dependence of $\rho$ and $T$ on radius drastically decreases instead.
+Thus, Eq.\,(\ref{eqn:C}) most strongly depends on the scale height ($\propto H^{-3}$), meaning thicker disks are more likely to obscure embedded SNe than thin disks.
 
 Beyond $R=10^3\,\Rs$ for disks around $\Mbh=10^8\,\Msun$, the SG model is unstable to collapse since Toomre's stability parameter $Q\approx\Omega^2/(2\pi G\rho) < 1$.
 To counteract this, the SG model artificially sets $Q=1$ by invoking some unknown source of energy that is possibly tied to in-disk star formation that makes the disk beyond this radius critically stable against gravitational collapse but could be attributed to SNe as well.
 For most SMBH masses the entire disk will allow SNe with $\mathbb{E}_{\rm SN}\geq10^{51}$\,erg to break free.
-At $\Mbh> 2\times10^8\,\Msun$, the muffling radius shrinks down to $\Rm\approx100\,\Rs$ when $\Mbh=10^9\,\Msun$.
-Since much of the disks will muffle SNe, they could be an additional component for maintaining pressure support.
+But above $\Mbh \sim 10^8\,\Msun$, the muffling radius moves inward, reaching $\Rm\approx100\,\Rs$ when $\Mbh=10^9\,\Msun$.
+Since much of these disks will muffle SNe, they could be an additional component for maintaining pressure support.
 
 The results for the TQM disk (bottom panel of Fig.~\ref{fig:breakout-tqm}) demonstrate a different behavior.
 The muffling radius has no dependence on the SMBH mass such that $\C(10^6\,\Rs)=1$ for all masses.
-The range of values for $\C$ is more confined than the SG disk and ranging over $10^{-4}\leq \C \leq 10^5$.
+The range of values for $\C$ is more confined than the SG disk and ranges over $10^{-4}\leq \C \leq 10^5$.
 Additionally, the TQM disk model produces a peak in the breakout zone around $\Rm=10^4\,\rs$ where $\C$ briefly reaches a local maximum before dropping off again at larger radii.
 Furthermore, for $\Mbh>10^7\,\msun$, this peak reaches $\log_{10}\C>5$, which decreases for lower SMBH masses.
 Finally, TQM disks around $\Mbh\sim10^6$ have relatively constant $\C$ at $10^2$ up to about $R\sim10^5\,\Rs$ before dropping towards the muffling radius at $\Rm=10^6\,\Rs$, congruent with the general behavior.
@@ -262,11 +262,11 @@ The reduced density away from the midplane offers less resistance, so shock brea
 
 We test the muffling radius $\Rm$ marked in red in Fig.~\ref{fig:breakout-sg} for a disk orbiting a $10^8\,\msun$ SMBH by placing our hydrodynamic shearing boxes at $R=[10^3, 10^5]\,\rs$, which have breakout parameters $\C=[2.6, 0.04]$, respectively.
 These parameters correspond to the stars in that figure.
-The top row of Fig.~\ref{fig:timeseries-composite-xz} shows a timeseries for a SNe at $R=10^3\,\Rs$ and the disk midplane $z_0=0$.
+The top row of Fig.~\ref{fig:timeseries-composite-xz} shows a time series for a SN at $R=10^3\,\Rs$ and the disk midplane $z_0=0$.
 In early times, the shock descends the pressure gradient of the disk and primarily expands vertically until it reaches $z=5\,H$ after 30 days where it is free to expand horizontally along the disk surface.
 At this point, the hemispheric expansion evolves symmetrically about the midplane and reaches our domain boundaries at $z=\pm65\,H$ in $\sim80$ days.
 The middle row of Fig.~\ref{fig:timeseries-composite-xz} shows the SN placed at $R=10^5\,\rs$ and at the disk midplane.
-In contrast to the SN at $10^3\,\rs$, this one remains muffled, only reaching $z\sim1\,H$ over the 1200 years evolution.
+In contrast to the SN at $10^3\,\rs$, this one remains muffled, only reaching $z\sim1\,H$ over the 1200 years' evolution.
 While the SN shock is physically contained at $R=10^5\,\Rs$, the SG disk model is optically thin at this location for $\Mbh \geq 10^7\,\msun$ leaving the possibility that the emitted photons still escape.
 The disks' radial ranges in each setup span the same number of scale heights $H$ but the full domains encompass drastically different volumes since $H=10$ AU at $R=10^3\,\Rs$ vs. 16,000 AU $R=10^5\,\Rs$, respectively.
 Stellar winds from massive SNe progenitors can carve cavities in the low density gas in the outer disk \citep{Fu-Lin+23}, but the large scale height at $R=10^5\,\Rs$ leaves them unresolved in our models.
@@ -284,7 +284,7 @@ By allowing the flow to exit the horizontal periodic boundaries, the assumption 
 \begin{figure*}
     \centering
     \includegraphics[width=1.0\textwidth]{ch_snhydro_figs/density_xz_timeseries.pdf}
-    \caption[$x-z$ gas density timeseries]{Timeseries of vertical slices ($x-z$) showing the gas volume density evolution for SNe embedded in accretion disks around an SMBH with mass $M=10^8\,\msun$.
+    \caption[$x-z$ gas density time series]{Timeseries of vertical slices ($x-z$) showing the gas volume density evolution for SNe embedded in accretion disks around an SMBH with mass $M=10^8\,\msun$.
     \emph{Top row}: Midplane detonation at $R=10^3\,\Rs$.
     \emph{Middle row}: Midplane detonation at $R=10^5\,\Rs$.
     \emph{Bottom row}: Offset detonation ($z=1H$) at $R=10^3\,\Rs$.}
@@ -305,7 +305,7 @@ Recall, the downward flow is subsonic by this point, indicating material that pi
 \begin{figure*}
     \centering
     \includegraphics[width=1.0\textwidth]{ch_snhydro_figs/density_xy_timeseries.pdf}
-    \caption[$x-y$ gas density timeseries]{Timeseries of midplane slices ($x-y$) showing the gas volume density evolution for SNe embedded in accretion disks around an SMBH with mass $M=10^8\,\msun$.
+    \caption[$x-y$ gas density time series]{Timeseries of midplane slices ($x-y$) showing the gas volume density evolution for SNe embedded in accretion disks around an SMBH with mass $M=10^8\,\msun$.
     \emph{Top row}: Midplane detonation at $R=10^3\,\Rs$.
     \emph{Middle row}: Midplane detonation at $R=10^5\,\Rs$.
     \emph{Bottom row}: Offset detonation ($z=1H$) at $R=10^3\,\Rs$.}
@@ -328,12 +328,12 @@ The exact nature of this asymmetrically propagating shock has strong implication
 Similar evolution is seen in \citet{Grishin+21}.
 
 As the disk captures stars \citep{MacLeodLin20,Nasim+22} some orbits will begin relatively aligned with it while others will start on highly inclined orbits.
-By nature of the geometry, the star will always be embedded at the disk at the nodes where the two orbits intersect, and for circular orbits the star will be outside of the disk 90 degrees from the nodes when the inclination is large enough.
-The inclination at which the entire orbit becomes embedded in the disk depends on its semi-major axis and the disk's aspect ratio, but as the orbit aligns, the star will progressively spend more time embedded within the disk and closer to the midplane.
+By nature of the geometry, the star will always be embedded at the disk at the nodes where the star's and disk's orbits intersect, and for circular orbits the star will be outside of the disk 90 degrees from the nodes when the inclination is large enough relative to the disk scale height.
+Thus, the inclination at which the entire orbit becomes embedded in the disk depends on its semi-major axis and the disk's local scale height, but as the orbit aligns, the star will progressively spend more time embedded within the disk and closer to the midplane.
 Our models show that the upward shock from an offset SN on an inclined orbit evolves more rapidly than a midplane SN in the same disk at the same radius.
-This holds for midplane SNe in a disk with a midplane density equal to the local density of an inclined SN.
+This holds for midplane a SN in a disk with a midplane density equal to the local density of an inclined SN.
 
-To verify this, we placed a SN at the midplane of a disk with a midplane density equal to the density at $z=1H$ in the inclined SN model, i.e., $\rho_0=\rho_{\rm D}(z=1H)\approx5\times10^{-10}$ g cm$^{-3}$ using Eq.\,(\ref{eqn:disk-z-profile}).
+To verify this, we placed a SN at the midplane of a disk with a midplane density equal to the density at $z=1H$ in the offset SN model, i.e., $\rho_0=\rho_{\rm D}(z=1H)\approx5\times10^{-10}$ g cm$^{-3}$ using Eq.\,(\ref{eqn:disk-z-profile}).
 The morphology of the plumes that exit the disk are practically identical, but the horizontal expansion into the midplane is slightly larger at corresponding times owing to the lower density.
 The vertical shock breakout occurs 6 days ahead of a midplane SN in the denser disk and 10 days behind the inclined SN's. Having been slowed down as it climbed out from the midplane, the flow traveling along the disk surface has a slower velocity, reaching the boundary 13 days behind the inclined SN.
 
@@ -366,7 +366,7 @@ The SG disk model may only represent one phase of the accretion process over the
 Disks in lower states of accretion will be more tenuous like the TQM model, allowing the SN to expand further into the midplane, excavate a larger portion of the disk atmosphere, and cause more disruption.
 Neither of these models consider magnetic fields that are carried into the disk by parcels of gas as they accrete from the torus.
 As magnetic fields build, the additional pressure becomes an important component of the overall disk pressure.
-Even fields that produce a plasma $\beta \equiv P_{\rm gas} / P_{\rm mag} = 10^{2.5}$ in the midlpane can become magnetically dominated away from the midplane and effectively increase the scale height relative to disks with much weaker fields at $\beta=10^4$ \citep{Gerling-Dunsmore+25}.
+Even fields that produce a plasma $\beta \equiv P_{\rm gas} / P_{\rm mag} = 10^{2.5}$ in the midplane can become magnetically dominated away from the midplane and effectively increase the scale height relative to disks with much weaker fields at $\beta=10^4$ \citep{Gerling-Dunsmore+25}.
 Since $H$ is the primary characteristic of an AGN disk for determining shock breakout, the magnetic fields could move the muffling radius inwards if the gas density remains similar to cases with no magnetic fields.
 In extreme cases, disk models following gas flows in cosmological simulations down to within a few Schwarzschild radii demonstrate buildup of strong magnetic fields reaching $\beta \sim 10^{-6} - 10^{-2} \ll 1$ \citep{Hopkins+25}.
 These flux-frozen disks suppress star formation entirely, implying the progenitors of any AGN-SNe must be captured by the disk from the nuclear star cluster \citep{Fabj+20,Nasim+22}.
@@ -390,7 +390,7 @@ and the volume rate similarly reduces to
 This chapter explored the possibility of SN shocks breaking free from the disk.
 \citet{Moranchel+21} and \citet{Grishin+21} approached this question with different methods yet achieved similar results for midplane and off-set scenarios.
 Whether radiation emitted by a SNe can be observed against the bright AGN disk is a separate matter and depends on the optical depth through the disk to the detonation site.
-For example, even though the shock in the model placed at $R=10^5\,\Rs$ was muffled, the SG disk model is optically thin at that radius when $\Mbh=10^8\,\Msun$, and photons directly emitted a SN may still escape.
+For example, even though the shock in the model placed at $R=10^5\,\Rs$ was muffled, the SG disk model is optically thin at that radius when $\Mbh=10^8\,\Msun$, and photons directly emitted by a SN may still escape.
 We will present detailed post-processing radiative transfer calculations to derive light curves for our shearing box simulations in the following chapter.
 
 As large surveys like the LSST generate baselines for substantially more AGN \citep{Kovacevic+22}, if we are able to constrain the rates of observable and non-observable AGN-SN, we will also have constraints on AGN disk properties such as their sizes and densities.
@@ -405,7 +405,7 @@ Similarly, Type Ia supernovae from accreting white dwarfs and kilonovae from bin
 
 \subsection{Conclusions}
 \label{sec:conclusions-snhydro}
-Massive stars in nuclear star clusters on orbits embedded in AGN accretion disks may detonate as SN from within the disk.
+Massive stars in nuclear star clusters on orbits embedded in AGN accretion disks may detonate as SNe from within the disk.
 The shock can break free from the disk if its internal pressure exceeds the ambient disk pressure and is muffled otherwise.
 The exact outcome depends on the radial and vertical location of the detonation as described by Eq.\,(\ref{eqn:C-parameterized}).
 We performed hydrodynamic three-dimensional shearing box simulations at two locations on either side of the muffling boundary of embedded SNe and found agreement with the analytic prediction for shock breakout from an SG-type AGN disk orbiting a black hole of mass $\Mbh=10^8\,\Msun$.
@@ -423,7 +423,7 @@ Specifically, we found:
 \end{itemize}
 
 
-As Vera Rubin Observatory and LSST expand our transient catalogs, automated search algorithms may identify light curves with previously-unobserved characteristics or features.
+As Vera Rubin Observatory and LSST expand our transient catalogs, automated search algorithms may identify light curves with previously unobserved characteristics or features.
 One potential source of these new transients could be AGN-embedded SNe whose light curves are altered by an AGN disk.
 In the following chapter we will describe results from our radiative transfer analysis of the models presented here.
 Combining radiative and kinematic SNe muffling may reveal information about an average disk's structure, leading to a broader understanding of AGN accretion physics and galactic nuclei in general.
